@@ -20,6 +20,14 @@ body{
     color: #E29D16;
 }
 
+#products .card{
+    background-color: #E29D16;
+}
+
+#products .card span{
+    border: none;
+}
+
 #navbar a{
     color: #E29D16;
 }
@@ -70,5 +78,6 @@ body{
     text-decoration: none;
     color: #E29D16;
 }
+
 
 
