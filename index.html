@@ -14,491 +14,339 @@
         <link rel="stylesheet" href="./assets/css/styles.css">
     </head>
     <body>
-        <!-- HEADER -->
-        <header>
-            <nav id="navbar" class="navbar navbar-expand-lg bg-dark navbar-dark">
-                <div class="container">
-                    <a class="navbar-brand" href="index.html">
-                        <img src="./assets/images/l1.png" alt="logo">
-                        <span>Hot Durger's</span>
-                    </a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                            <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="index.html">Home</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="#hamburguers">Hamburguesas</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="#hotdogs">Perros Calientes</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="#">Login</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-highlightedd" href="#">Carrito <i class="fas fa-shopping-cart"></i></a>
-                            </li>
-                        </ul>
+        <div id="app">
+            <!-- HEADER -->
+            <header>
+                <nav id="navbar" class="navbar navbar-expand-lg bg-dark navbar-dark">
+                    <div class="container">
+                        <a class="navbar-brand" href="index.html">
+                            <img src="./assets/images/l1.png" alt="logo">
+                            <span>Hot Durger's</span>
+                        </a>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                                <li class="nav-item">
+                                    <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link active" aria-current="page" href="#hamburguers">Hamburguesas</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link active" aria-current="page" href="#hotdogs">Perros Calientes</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link active" aria-current="page" href="#" data-bs-toggle="modal" data-bs-target="#login">Login</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-highlightedd" href="#">Carrito <i class="fas fa-shopping-cart"></i></a>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
-                </div>
-            </nav>
-        </header>
-        <!-- HEADER -->
+                </nav>
+            </header>
+            <!-- HEADER -->
 
-        <!-- MAIN -->
-        <section id="main">
-            <div id="carousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-pause="false">
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <img src="./assets/images/hb1.jpg" class="d-block w-100" alt="js">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="./assets/images/hb4.jpg" class="d-block w-100" alt="vuejs">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="./assets/images/hd1.jpg" class="d-block w-100" alt="nodejs">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="./assets/images/hd4.jpg" class="d-block w-100" alt="nodejs">
-                    </div>
-                    <div class="overlay">
-                        <div class="container">
-                            <div class="row align-items-center">
-                                <div class="col md-6 offset-md-6 text-center text-md-start">
-                                    <h1>Las mejores hamburguesas y perros calientes</h1>
-                                    <p class="d-none d-md-block">
-                                        Productos realizados de manera 100% artesanal, con carne de la mas alta elección.
-                                        Date el gusto y consiente a tu paladar.
-                                    </p>
-                                </div>
-                            </div>
+            <!-- MAIN -->
+            <section id="main">
+                <div id="carousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-pause="false">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="./assets/images/hb1.jpg" class="d-block w-100" alt="js">
                         </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- products -->
-            <section id="products" class="mt-4">
-                <div class="container">
-                    <div class="row">
-                        <div class="col text-center text-uppercase">
-                            <h1 class="menu-title" id="hamburguers">Carta Hamburguesas</h1>
+                        <div class="carousel-item">
+                            <img src="./assets/images/hb4.jpg" class="d-block w-100" alt="vuejs">
                         </div>
-                    </div>
-                    <!-- Hamburguers here -->
-                    <div class="row">
-                        <div class="col-md-6 col-lg-3 mt-3 mb-4">
-                            <div class="card">
-                                <img src="./assets/images/hb1.jpg" class="card-img-top" alt="hb1" data-bs-toggle="modal" data-bs-target="#hb1">
-                                <div class="card-body">
-                                    <h5 class="card-title">Hamburguesa Doble</h5>
-                                    <p class="card-text"><strong>Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat voluptatibus sapiente aliquid deleniti, rem nisi!</strong></p>
-                                    <h4 class="text-center mb-3">$30.000</h4>
-                                    <div class="row">
-                                        <div class="input-group mb-3">
-                                            <span class="input-group-text bg-dark"><button type="button" class="btn btn-dark"><i class="fas fa-minus"></i></button></span>
-                                            <input type="number" class="form-control" placeholder="Cantidad">
-                                            <span class="input-group-text bg-dark"><button type="button" class="btn btn-dark"><i class="fas fa-plus"></i></button></span>
-                                        </div>
-                                        <div><button type="button" class="col-12 btn btn-dark">Agregar</button></div>
+                        <div class="carousel-item">
+                            <img src="./assets/images/hd1.jpg" class="d-block w-100" alt="nodejs">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="./assets/images/hd4.jpg" class="d-block w-100" alt="nodejs">
+                        </div>
+                        <div class="overlay">
+                            <div class="container">
+                                <div class="row align-items-center">
+                                    <div class="col md-6 offset-md-6 text-center text-md-start">
+                                        <h1>Las mejores hamburguesas y perros calientes</h1>
+                                        <p class="d-none d-md-block">
+                                            Productos realizados de manera 100% artesanal, con carne de la mas alta elección.
+                                            Date el gusto y consiente a tu paladar.
+                                        </p>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-6 col-lg-3 mt-3 mb-4">
-                            <div class="card">
-                                <img src="./assets/images/hb2.jpg" class="card-img-top" alt="hb2" data-bs-toggle="modal" data-bs-target="#hb2">
-                                <div class="card-body">
-                                    <h5 class="card-title">Hamburguer 2 name</h5>
-                                    <p class="card-text"><strong>Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat voluptatibus sapiente aliquid deleniti, rem nisi!</strong></p>
-                                    <h4 class="text-center mb-3">$30.000</h4>
-                                    <div class="row">
-                                        <div class="input-group mb-3">
-                                            <span class="input-group-text bg-dark"><button type="button" class="btn btn-dark"><i class="fas fa-minus"></i></button></span>
-                                            <input type="number" class="form-control" placeholder="Cantidad">
-                                            <span class="input-group-text bg-dark"><button type="button" class="btn btn-dark"><i class="fas fa-plus"></i></button></span>
-                                        </div>
-                                        <div><button type="button" class="col-12 btn btn-dark">Agregar</button></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-lg-3 mt-3 mb-4">
-                            <div class="card">
-                                <img src="./assets/images/hb3.jpg" class="card-img-top" alt="hb3" data-bs-toggle="modal" data-bs-target="#hb3">
-                                <div class="card-body">
-                                    <h5 class="card-title">Hamburguer 3 name</h5>
-                                    <p class="card-text"><strong>Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat voluptatibus sapiente aliquid deleniti, rem nisi!</strong></p>
-                                    <h4 class="text-center mb-3">$30.000</h4>
-                                    <div class="row">
-                                        <div class="input-group mb-3">
-                                            <span class="input-group-text bg-dark"><button type="button" class="btn btn-dark"><i class="fas fa-minus"></i></button></span>
-                                            <input type="number" class="form-control" placeholder="Cantidad">
-                                            <span class="input-group-text bg-dark"><button type="button" class="btn btn-dark"><i class="fas fa-plus"></i></button></span>
-                                        </div>
-                                        <div><button type="button" class="col-12 btn btn-dark">Agregar</button></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-lg-3 mt-3 mb-4">
-                            <div class="card">
-                                <img src="./assets/images/hb4.jpg" class="card-img-top" alt="hb4" data-bs-toggle="modal" data-bs-target="#hb4">
-                                <div class="card-body">
-                                    <h5 class="card-title">Hamburguer 4 name</h5>
-                                    <p class="card-text"><strong>Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat voluptatibus sapiente aliquid deleniti, rem nisi!</strong></p>
-                                    <h4 class="text-center mb-3">$30.000</h4>
-                                    <div class="row">
-                                        <div class="input-group mb-3">
-                                            <span class="input-group-text bg-dark"><button type="button" class="btn btn-dark"><i class="fas fa-minus"></i></button></span>
-                                            <input type="number" class="form-control" placeholder="Cantidad">
-                                            <span class="input-group-text bg-dark"><button type="button" class="btn btn-dark"><i class="fas fa-plus"></i></button></span>
-                                        </div>
-                                        <div><button type="button" class="col-12 btn btn-dark">Agregar</button></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    <!-- /Hamburguers here -->
-                        <hr>
-                        <div class="row">
-                            <div class="col text-center text-uppercase">
-                                <h1 class="menu-title" id="hotdogs">Carta Perros Calientes</h1>
-                            </div>
-                        </div>
-                    <!-- hotdogs here -->
-                        <div class="col-md-6 col-lg-3 mt-3 mb-4">
-                            <div class="card">
-                                <img src="./assets/images/hd1.jpg" class="card-img-top" alt="hd1" data-bs-toggle="modal" data-bs-target="#hd1">
-                                <div class="card-body">
-                                    <h5 class="card-title">Hot Dog 1 name</h5>
-                                    <p class="card-text"><strong>Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat voluptatibus sapiente aliquid deleniti, rem nisi!</strong></p>
-                                    <h4 class="text-center mb-3">$30.000</h4>
-                                    <div class="row">
-                                        <div class="input-group mb-3">
-                                            <span class="input-group-text bg-dark"><button type="button" class="btn btn-dark"><i class="fas fa-minus"></i></button></span>
-                                            <input type="number" class="form-control" placeholder="Cantidad">
-                                            <span class="input-group-text bg-dark"><button type="button" class="btn btn-dark"><i class="fas fa-plus"></i></button></span>
-                                        </div>
-                                        <div><button type="button" class="col-12 btn btn-dark">Agregar</button></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-lg-3 mt-3 mb-4">
-                            <div class="card">
-                                <img src="./assets/images/hd2.jpg" class="card-img-top" alt="hd2" data-bs-toggle="modal" data-bs-target="#hd2">
-                                <div class="card-body">
-                                    <h5 class="card-title">Hot Dog 2 name</h5>
-                                    <p class="card-text"><strong>Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat voluptatibus sapiente aliquid deleniti, rem nisi!</strong></p>
-                                    <h4 class="text-center mb-3">$30.000</h4>
-                                    <div class="row">
-                                        <div class="input-group mb-3">
-                                            <span class="input-group-text bg-dark"><button type="button" class="btn btn-dark"><i class="fas fa-minus"></i></button></span>
-                                            <input type="number" class="form-control" placeholder="Cantidad">
-                                            <span class="input-group-text bg-dark"><button type="button" class="btn btn-dark"><i class="fas fa-plus"></i></button></span>
-                                        </div>
-                                        <div><button type="button" class="col-12 btn btn-dark">Agregar</button></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-lg-3 mt-3 mb-4">
-                            <div class="card">
-                                <img src="./assets/images/hd3.jpg" class="card-img-top" alt="hd3" data-bs-toggle="modal" data-bs-target="#hd3">
-                                <div class="card-body">
-                                    <h5 class="card-title">Hot Dog 3 name</h5>
-                                    <p class="card-text"><strong>Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat voluptatibus sapiente aliquid deleniti, rem nisi!</strong></p>
-                                    <h4 class="text-center mb-3">$30.000</h4>
-                                    <div class="row">
-                                        <div class="input-group mb-3">
-                                            <span class="input-group-text bg-dark"><button type="button" class="btn btn-dark"><i class="fas fa-minus"></i></button></span>
-                                            <input type="number" class="form-control" placeholder="Cantidad">
-                                            <span class="input-group-text bg-dark"><button type="button" class="btn btn-dark"><i class="fas fa-plus"></i></button></span>
-                                        </div>
-                                        <div><button type="button" class="col-12 btn btn-dark">Agregar</button></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-lg-3 mt-3 mb-4">
-                            <div class="card">
-                                <img src="./assets/images/hd4.jpg" class="card-img-top" alt="hd4" data-bs-toggle="modal" data-bs-target="#hd4">
-                                <div class="card-body">
-                                    <h5 class="card-title">Hot Dog 4 name</h5>
-                                    <p class="card-text"><strong>Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat voluptatibus sapiente aliquid deleniti, rem nisi!</strong></p>
-                                    <h4 class="text-center mb-3">$30.000</h4>
-                                    <div class="row">
-                                        <div class="input-group mb-3">
-                                            <span class="input-group-text bg-dark"><button type="button" class="btn btn-dark"><i class="fas fa-minus"></i></button></span>
-                                            <input type="number" class="form-control" placeholder="Cantidad">
-                                            <span class="input-group-text bg-dark"><button type="button" class="btn btn-dark"><i class="fas fa-plus"></i></button></span>
-                                        </div>
-                                        <div><button type="button" class="col-12 btn btn-dark">Agregar</button></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- /hotdogs here -->
-                    
-                        <!-- Modals -->
-                        <!-- modals hamburguers -->
-                        <section id="modals">
-                            <div class="modal fade" id="hb1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title text-center" id="exampleModalLabel">Hamburguesa Doble</h5>
-                                            <button type="button" class="btn btn-dark" data-bs-dismiss="modal" aria-label="Close"><i class="fas fa-times"></i></button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <img src="./assets/images/hb1.jpg" class="card-img-top" alt="hd4">
-                                            <h4>Descripción:</h4>
-                                            <p>
-                                                Lorem ipsum dolor sit, amet consectetur adipisicing elit. 
-                                                Ex ipsa possimus dolorum numquam dolor enim mollitia?
-                                            </p>
-                                            <div class="input-group mb-3">
-                                                <span class="input-group-text bg-dark"><button type="button" class="btn btn-dark"><i class="fas fa-minus"></i></button></span>
-                                                <input type="number" class="form-control" placeholder="Cantidad">
-                                                <span class="input-group-text bg-dark"><button type="button" class="btn btn-dark"><i class="fas fa-plus"></i></button></span>
-                                            </div>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button"><strong>COMPRAR</strong></button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="modal fade" id="hb2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">Hamburguesa 2 name</h5>
-                                            <button type="button" class="btn btn-dark" data-bs-dismiss="modal" aria-label="Close"><i class="fas fa-times"></i></button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <img src="./assets/images/hb2.jpg" class="card-img-top" alt="hd4">
-                                            <h4>Descripción:</h4>
-                                            <p>
-                                                Lorem ipsum dolor sit, amet consectetur adipisicing elit. 
-                                                Ex ipsa possimus dolorum numquam dolor enim mollitia?
-                                            </p>
-                                            <div class="input-group mb-3">
-                                                <span class="input-group-text bg-dark"><button type="button" class="btn btn-dark"><i class="fas fa-minus"></i></button></span>
-                                                <input type="number" class="form-control" placeholder="Cantidad">
-                                                <span class="input-group-text bg-dark"><button type="button" class="btn btn-dark"><i class="fas fa-plus"></i></button></span>
-                                            </div>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button"><strong>COMPRAR</strong></button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="modal fade" id="hb3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">Hamburguesa 3 name</h5>
-                                            <button type="button" class="btn btn-dark" data-bs-dismiss="modal" aria-label="Close"><i class="fas fa-times"></i></button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <img src="./assets/images/hb3.jpg" class="card-img-top" alt="hd4">
-                                            <h4>Descripción:</h4>
-                                            <p>
-                                                Lorem ipsum dolor sit, amet consectetur adipisicing elit. 
-                                                Ex ipsa possimus dolorum numquam dolor enim mollitia?
-                                            </p>
-                                            <div class="input-group mb-3">
-                                                <span class="input-group-text bg-dark"><button type="button" class="btn btn-dark"><i class="fas fa-minus"></i></button></span>
-                                                <input type="number" class="form-control" placeholder="Cantidad">
-                                                <span class="input-group-text bg-dark"><button type="button" class="btn btn-dark"><i class="fas fa-plus"></i></button></span>
-                                            </div>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button"><strong>COMPRAR</strong></button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="modal fade" id="hb4" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">Hamburguesa 4 name</h5>
-                                            <button type="button" class="btn btn-dark" data-bs-dismiss="modal" aria-label="Close"><i class="fas fa-times"></i></button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <img src="./assets/images/hb4.jpg" class="card-img-top" alt="hd4">
-                                            <h4>Descripción:</h4>
-                                            <p>
-                                                Lorem ipsum dolor sit, amet consectetur adipisicing elit. 
-                                                Ex ipsa possimus dolorum numquam dolor enim mollitia?
-                                            </p>
-                                            <div class="input-group mb-3">
-                                                <span class="input-group-text bg-dark"><button type="button" class="btn btn-dark"><i class="fas fa-minus"></i></button></span>
-                                                <input type="number" class="form-control" placeholder="Cantidad">
-                                                <span class="input-group-text bg-dark"><button type="button" class="btn btn-dark"><i class="fas fa-plus"></i></button></span>
-                                            </div>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button"><strong>COMPRAR</strong></button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- /modals hamburguers -->
-
-                            <!-- modals hotdogs -->
-                            <div class="modal fade" id="hd1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">Hot Dog 1 Name</h5>
-                                            <button type="button" class="btn btn-dark" data-bs-dismiss="modal" aria-label="Close"><i class="fas fa-times"></i></button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <img src="./assets/images/hd1.jpg" class="card-img-top" alt="hd4">
-                                            <h4>Descripción:</h4>
-                                            <p>
-                                                Lorem ipsum dolor sit, amet consectetur adipisicing elit. 
-                                                Ex ipsa possimus dolorum numquam dolor enim mollitia?
-                                            </p>
-                                            <div class="input-group mb-3">
-                                                <span class="input-group-text bg-dark"><button type="button" class="btn btn-dark"><i class="fas fa-minus"></i></button></span>
-                                                <input type="number" class="form-control" placeholder="Cantidad">
-                                                <span class="input-group-text bg-dark"><button type="button" class="btn btn-dark"><i class="fas fa-plus"></i></button></span>
-                                            </div>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button"><strong>COMPRAR</strong></button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="modal fade" id="hd2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">Hot Dog 2 Name</h5>
-                                            <button type="button" class="btn btn-dark" data-bs-dismiss="modal" aria-label="Close"><i class="fas fa-times"></i></button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <img src="./assets/images/hd2.jpg" class="card-img-top" alt="hd4">
-                                            <h4>Descripción:</h4>
-                                            <p>
-                                                Lorem ipsum dolor sit, amet consectetur adipisicing elit. 
-                                                Ex ipsa possimus dolorum numquam dolor enim mollitia?
-                                            </p>
-                                            <div class="input-group mb-3">
-                                                <span class="input-group-text bg-dark"><button type="button" class="btn btn-dark"><i class="fas fa-minus"></i></button></span>
-                                                <input type="number" class="form-control" placeholder="Cantidad">
-                                                <span class="input-group-text bg-dark"><button type="button" class="btn btn-dark"><i class="fas fa-plus"></i></button></span>
-                                            </div>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button"><strong>COMPRAR</strong></button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="modal fade" id="hd3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">Hot Dog 3 Name</h5>
-                                            <button type="button" class="btn btn-dark" data-bs-dismiss="modal" aria-label="Close"><i class="fas fa-times"></i></button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <img src="./assets/images/hd3.jpg" class="card-img-top" alt="hd4">
-                                            <h4>Descripción:</h4>
-                                            <p>
-                                                Lorem ipsum dolor sit, amet consectetur adipisicing elit. 
-                                                Ex ipsa possimus dolorum numquam dolor enim mollitia?
-                                            </p>
-                                            <div class="input-group mb-3">
-                                                <span class="input-group-text bg-dark"><button type="button" class="btn btn-dark"><i class="fas fa-minus"></i></button></span>
-                                                <input type="number" class="form-control" placeholder="Cantidad">
-                                                <span class="input-group-text bg-dark"><button type="button" class="btn btn-dark"><i class="fas fa-plus"></i></button></span>
-                                            </div>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button"><strong>COMPRAR</strong></button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="modal fade" id="hd4" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">Hot Dog 4 Name</h5>
-                                            <button type="button" class="btn btn-dark" data-bs-dismiss="modal" aria-label="Close"><i class="fas fa-times"></i></button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <img src="./assets/images/hd4.jpg" class="card-img-top" alt="hd4">
-                                            <h4>Descripción:</h4>
-                                            <p>
-                                                Lorem ipsum dolor sit, amet consectetur adipisicing elit. 
-                                                Ex ipsa possimus dolorum numquam dolor enim mollitia?
-                                            </p>
-                                            <div class="input-group mb-3">
-                                                <span class="input-group-text bg-dark"><button type="button" class="btn btn-dark"><i class="fas fa-minus"></i></button></span>
-                                                <input type="number" class="form-control" placeholder="Cantidad">
-                                                <span class="input-group-text bg-dark"><button type="button" class="btn btn-dark"><i class="fas fa-plus"></i></button></span>
-                                            </div>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button"><strong>COMPRAR</strong></button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- /modals hotdogs-->
-                        </section>
-                        <!-- /Modals -->
                     </div>
                 </div>
             </section>
-        <!-- /products -->
+            <!-- products -->
+                <section id="products" class="mt-4">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col text-center text-uppercase">
+                                <h1 class="menu-title" id="hamburguers">Carta Hamburguesas</h1>
+                            </div>
+                        </div>
+                        <!-- Products here -->
+                        <div class="row" v-if="hb.length && hd.length">
+                            <!-- hamburgers -->
+                            <div class="col-md-6 col-lg-3 mt-3 mb-4" v-for="(item, index) in hb" :key="item.id">
+                                <div class="card" >
+                                    <img :src="item.img" class="card-img-top" alt="hb1" data-bs-toggle="modal" :data-bs-target="item.modalw">
+                                    <div class="card-body">
+                                        <h5 class="card-title" v-text="item.name">Hamburguesa Doble</h5>
+                                        <p class="card-text"><strong  v-text="item.desc"></strong></p>
+                                        <h4 class="text-center mb-3" v-text="item.price">$30.000</h4>
+                                        <div class="row">
+                                            <div class="input-group mb-3">
+                                                <span class="input-group-text bg-dark"><button type="button" class="btn btn-dark"><i class="fas fa-minus"></i></button></span>
+                                                <input type="number" class="form-control" placeholder="Cantidad">
+                                                <span class="input-group-text bg-dark"><button type="button" class="btn btn-dark"><i class="fas fa-plus"></i></button></span>
+                                            </div>
+                                            <div><button type="button" class="col-12 btn btn-dark">Agregar</button></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /hamburgers -->
+                            <hr>
+                            <div class="row">
+                                <div class="col text-center text-uppercase">
+                                    <h1 class="menu-title" id="hotdogs">Carta Perros Calientes</h1>
+                                </div>
+                            </div>
+                            <!-- hotdogs here -->
+                            <div class="col-md-6 col-lg-3 mt-3 mb-4" v-for="(item, index) in hd" :key="item.id">
+                                <div class="card" >
+                                    <img :src="item.img" class="card-img-top" alt="hd1" data-bs-toggle="modal" :data-bs-target="item.modalw">
+                                    <div class="card-body">
+                                        <h5 class="card-title" v-text="item.name">Hamburguesa Doble</h5>
+                                        <p class="card-text"><strong  v-text="item.desc"></strong></p>
+                                        <h4 class="text-center mb-3" v-text="item.price">$30.000</h4>
+                                        <div class="row">
+                                            <div class="input-group mb-3">
+                                                <span class="input-group-text bg-dark"><button type="button" class="btn btn-dark"><i class="fas fa-minus"></i></button></span>
+                                                <input type="number" class="form-control" placeholder="Cantidad">
+                                                <span class="input-group-text bg-dark"><button type="button" class="btn btn-dark"><i class="fas fa-plus"></i></button></span>
+                                            </div>
+                                            <div><button type="button" class="col-12 btn btn-dark">Agregar</button></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /hotdogs here -->
+                        
+                            <!-- Modals -->
+                            <section id="modals" v-if="hb.length && hb.length">
+                                <!-- modals hamburguers -->
+                                <div class="modal fade" :id="item.modal_id" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" v-for="(item, index) in hb" :key="item.id">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title text-center" id="exampleModalLabel" v-text="item.name"></h5>
+                                                <button type="button" class="btn btn-dark" data-bs-dismiss="modal" aria-label="Close"><i class="fas fa-times"></i></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <img :src="item.img" class="card-img-top" alt="hd4">
+                                                <h4>Descripción:</h4>
+                                                <p v-text="item.descmodal"></p>
+                                                <div class="input-group mb-3">
+                                                    <span class="input-group-text bg-dark"><button type="button" class="btn btn-dark"><i class="fas fa-minus"></i></button></span>
+                                                    <input type="number" class="form-control" placeholder="Cantidad">
+                                                    <span class="input-group-text bg-dark"><button type="button" class="btn btn-dark"><i class="fas fa-plus"></i></button></span>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button"><strong>COMPRAR</strong></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- <div class="modal fade" id="hb2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">Hamburguesa 2 name</h5>
+                                                <button type="button" class="btn btn-dark" data-bs-dismiss="modal" aria-label="Close"><i class="fas fa-times"></i></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <img src="./assets/images/hb2.jpg" class="card-img-top" alt="hd4">
+                                                <h4>Descripción:</h4>
+                                                <p>
+                                                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. 
+                                                    Ex ipsa possimus dolorum numquam dolor enim mollitia?
+                                                </p>
+                                                <div class="input-group mb-3">
+                                                    <span class="input-group-text bg-dark"><button type="button" class="btn btn-dark"><i class="fas fa-minus"></i></button></span>
+                                                    <input type="number" class="form-control" placeholder="Cantidad">
+                                                    <span class="input-group-text bg-dark"><button type="button" class="btn btn-dark"><i class="fas fa-plus"></i></button></span>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button"><strong>COMPRAR</strong></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal fade" id="hb3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">Hamburguesa 3 name</h5>
+                                                <button type="button" class="btn btn-dark" data-bs-dismiss="modal" aria-label="Close"><i class="fas fa-times"></i></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <img src="./assets/images/hb3.jpg" class="card-img-top" alt="hd4">
+                                                <h4>Descripción:</h4>
+                                                <p>
+                                                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. 
+                                                    Ex ipsa possimus dolorum numquam dolor enim mollitia?
+                                                </p>
+                                                <div class="input-group mb-3">
+                                                    <span class="input-group-text bg-dark"><button type="button" class="btn btn-dark"><i class="fas fa-minus"></i></button></span>
+                                                    <input type="number" class="form-control" placeholder="Cantidad">
+                                                    <span class="input-group-text bg-dark"><button type="button" class="btn btn-dark"><i class="fas fa-plus"></i></button></span>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button"><strong>COMPRAR</strong></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal fade" id="hb4" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">Hamburguesa 4 name</h5>
+                                                <button type="button" class="btn btn-dark" data-bs-dismiss="modal" aria-label="Close"><i class="fas fa-times"></i></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <img src="./assets/images/hb4.jpg" class="card-img-top" alt="hd4">
+                                                <h4>Descripción:</h4>
+                                                <p>
+                                                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. 
+                                                    Ex ipsa possimus dolorum numquam dolor enim mollitia?
+                                                </p>
+                                                <div class="input-group mb-3">
+                                                    <span class="input-group-text bg-dark"><button type="button" class="btn btn-dark"><i class="fas fa-minus"></i></button></span>
+                                                    <input type="number" class="form-control" placeholder="Cantidad">
+                                                    <span class="input-group-text bg-dark"><button type="button" class="btn btn-dark"><i class="fas fa-plus"></i></button></span>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button"><strong>COMPRAR</strong></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div> -->
+                                <!-- /modals hamburguers -->
 
-        <!-- FOOTER -->
-        <footer id="footer" class="pb-4 pt-4">
-            <div class="container">
-                <div class="row text-center">
-                    <div class="col-12 col-lg col-md">
-                        <a href="#">Preguntas Frecuentes</a>
+                                <!-- modals hotdogs -->
+                                <div class="modal fade" :id="item.modal_id" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" v-for="(item, index) in hd" :key="item.id">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title text-center" id="exampleModalLabel" v-text="item.name"></h5>
+                                                <button type="button" class="btn btn-dark" data-bs-dismiss="modal" aria-label="Close"><i class="fas fa-times"></i></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <img :src="item.img" class="card-img-top" alt="hd4">
+                                                <h4>Descripción:</h4>
+                                                <p v-text="item.descmodal"></p>
+                                                <div class="input-group mb-3">
+                                                    <span class="input-group-text bg-dark"><button type="button" class="btn btn-dark"><i class="fas fa-minus"></i></button></span>
+                                                    <input type="number" class="form-control" placeholder="Cantidad">
+                                                    <span class="input-group-text bg-dark"><button type="button" class="btn btn-dark"><i class="fas fa-plus"></i></button></span>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button"><strong>COMPRAR</strong></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- /modals hotdogs-->
+                                <!--Modal login-->
+                                <div class="modal fade" id="login" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header text-center">
+                                                <h5 class="modal-title text-center" id="exampleModalLabel">Login</h5>
+                                                <button type="button" class="btn btn-dark" data-bs-dismiss="modal" aria-label="Close"><i class="fas fa-times"></i></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="sigIn-formulario text-center" >
+                                                    <h1 class="sigIn-title mb-3">Hot Durger's</h1>
+                                                    <img src="assets/images/l1.png" alt="Icono" class="sigIn-Icon ">
+                                                    <div class="form-floating mb-4">
+                                                        <input type="text"  class="form-control" id="floatingUser" placeholder="User" required>
+                                                        <label for="floatingUser">USUARIO</label>
+                                                        <!-- <span style="color: red;" v-if="usserP <= 999">Ingrese el usuario </span> -->
+                                                    </div>
+                                                    <div class="form-floating mb-4">
+                                                        <input type="password" maxlength="4" minlength="4" class="form-control" id="floatingPassword" placeholder="Password" required>
+                                                        <label for="floatingPassword">CONTRASEÑA</label>
+                                                        <!-- <span style="color: red;" v-if="usserP <= 999">Ingrese un pin correcto</span> -->
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button"><strong>INGRESAR</strong></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- /Modal login -->
+
+                                <!-- modal cart -->
+
+                                <!-- /modal cart -->
+                            </section>
+                            <!-- /Modals -->
+                        </div>
                     </div>
-                    <div class="col-12 col-lg col-md">
-                        <a href="#">Contáctanos</a>
+                </section>
+            <!-- /products -->
+
+            <!-- FOOTER -->
+            <footer id="footer" class="pb-4 pt-4">
+                <div class="container">
+                    <div class="row text-center">
+                        <div class="col-12 col-lg col-md">
+                            <a href="#">Preguntas Frecuentes</a>
+                        </div>
+                        <div class="col-12 col-lg col-md">
+                            <a href="#">Contáctanos</a>
+                        </div>
+                        <div class="col-12 col-lg col-md">
+                            <a href="#">Novedades</a>
+                        </div>
+                        <div class="col-12 col-lg col-md">
+                            <a href="#">Privacidad</a>
+                        </div>
+                        <div class="col-12 col-lg col-md">
+                            <a href="#">Productos</a>
+                        </div>
+                        <div class="col-12 col-lg col-md">
+                            <h6 class="text-center mt-2 mb-2">
+                                Siguenos: 
+                                <a href="#"><i class="fab fa-instagram-square"></i></a>
+                                <a href="#"><i class="fab fa-facebook-square"></i></a>
+                            </h6>
+                        </div>
                     </div>
-                    <div class="col-12 col-lg col-md">
-                        <a href="#">Novedades</a>
-                    </div>
-                    <div class="col-12 col-lg col-md">
-                        <a href="#">Privacidad</a>
-                    </div>
-                    <div class="col-12 col-lg col-md">
-                        <a href="#">Productos</a>
-                    </div>
-                    <div class="col-12 col-lg col-md">
-                        <h6 class="text-center mt-2 mb-2">
-                            Siguenos: 
-                            <a href="#"><i class="fab fa-instagram-square"></i></a>
-                            <a href="#"><i class="fab fa-facebook-square"></i></a>
-                        </h6>
-                    </div>
+                    <h6 class="text-center mt-4">© Copyright - All rights reserved</h6>
+                    <h6 class="text-center mt-4">HotDurger's</h6>
                 </div>
-                <h6 class="text-center mt-4">© Copyright - All rights reserved</h6>
-                <h6 class="text-center mt-4">HotDurger's</h6>
-            </div>
-        </footer>
-        <!-- FOOTER -->
+            </footer>
+            <!-- /FOOTER -->
+        </div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
     </body>
+    <script src="./assets/js/vue.js"></script>
+    <script src="./assets/js/main.js"></script>
 </html>

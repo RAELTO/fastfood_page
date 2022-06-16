@@ -94,6 +94,13 @@ body{
     border: none;
 }
 
+#login .modal-body{
+    display:flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    
+}
+
 #modals .modal-content{
     border: none;
 }
