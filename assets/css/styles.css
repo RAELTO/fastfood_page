@@ -43,6 +43,10 @@ body{
     color: #E29D16;
 }
 
+#navbar a:hover{
+    color: #e1cc09;
+}
+
 .text-highlighted{
     color: #97c93e !important
 }
