@@ -1,3 +1,7 @@
+html {
+    scroll-behavior: smooth;
+}
+
 body{
     background-color: #191919;
 }
@@ -68,6 +72,58 @@ body{
 
 #carousel .overlay .col{
     margin: auto;
+}
+
+#modals{
+    border: none;
+}
+
+#modals .modal-content{
+    border: none;
+}
+
+#modals .modal-body{
+    background-color: #E29D16;
+    border: none;
+}
+
+#modals .modal-header button{
+    color: #E29D16;
+}
+
+#modals .modal-header .modal-title{
+    color: #E29D16;
+}
+
+#modals .modal-body p{
+    font-weight: bold;
+}
+
+#modals .modal-body img{
+    border-radius: 10px;
+}
+
+#modals .modal-header, .modal-footer{
+    background-color: #191919;
+    color: #fff;
+    border: none;
+}
+
+#modals .modal-footer button{
+    margin: auto;
+    background-image: url("../images/buy-btn.png");
+    background-color: transparent;
+    border: 0;
+    padding: 14px 80px 14px 65px;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    color: #E29D16;
+    transition: 0.5s all ease;
+}
+
+#modals .modal-footer button:hover{
+    background-image: url("../images/buy-btn-hover.png");
+    color: #000;
 }
 
 #footer {
