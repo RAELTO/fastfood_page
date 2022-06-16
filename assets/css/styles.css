@@ -7,6 +7,7 @@ body{
 
 }
 
+
 #navbar .navbar-brand span{
     border: 2px solid #E29D16;
     color: #fff;
@@ -18,14 +19,6 @@ body{
 
 #products hr{
     color: #E29D16;
-}
-
-#products .card{
-    background-color: #E29D16;
-}
-
-#products .card span{
-    border: none;
 }
 
 #navbar a{
@@ -73,11 +66,26 @@ body{
 #footer {
     background: linear-gradient(90deg, #0b0b0b, #1b1c1d 25%, #232526);
 }
+.modal-footer button{
+    margin: auto;
+    background-image: url("../images/buy-btn.png");
+    background-color: transparent;
+    border: 0;
+    padding: 14px 80px 14px 65px;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    color: #E29D16;
+    transition: 0.5s all ease;
+}
+
+.modal-footer button:hover{
+    background-image: url("../images/buy-btn-hover.png");
+    color: #000;
+}
 
 #footer a, h6 {
     text-decoration: none;
     color: #E29D16;
 }
-
 
 
