@@ -8,7 +8,6 @@ body{
 
 #navbar img{
     width: 60px;
-
 }
 
 #navbar .navbar-brand span{
@@ -30,6 +29,10 @@ body{
 
 #products .card span{
     border: none;
+}
+
+#products .card img:hover{
+    border: 4px solid #000;
 }
 
 #navbar a{
@@ -133,6 +136,10 @@ body{
 #footer a, h6 {
     text-decoration: none;
     color: #E29D16;
+}
+
+#footer h6 i{
+    font-size: 20px;
 }
 
 
