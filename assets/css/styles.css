@@ -40,6 +40,10 @@ body{
     cursor: pointer;
 }
 
+#products .card-body p{
+    text-align: justify;
+}
+
 #navbar a{
     color: #E29D16;
 }
@@ -97,6 +101,10 @@ body{
 #modals .modal-body{
     background-color: #E29D16;
     border: none;
+}
+
+#modals .modal-body p{
+    text-align: justify;
 }
 
 #modals .modal-header button{
