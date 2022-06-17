@@ -126,6 +126,12 @@ var app = new Vue({
             {id: 1, prod: 'TEST1', qty: 1, price: 30000},
             {id: 2, prod: 'TEST2', qty: 1, price: 30000},
         ],
+        cheftable: [
+            {id: 1, order: 'abcd', qty: 0, status: 'Completado'},
+        ],
+        waitertable: [
+            {id: 1, order: 'efgh', qty: 0, status: 'Pendiente'},
+        ],
         totalCart: 0,
         //variables below
     },
