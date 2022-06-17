@@ -148,17 +148,34 @@ body{
     transition: 0.5s all ease;
 }
 
+#modals .modal-footer button:hover{
+    background-image: url("../images/buy-btn-hover.png");
+    color: #000;
+}
+
+#modals .modal-footer .cancel{
+    margin: auto;
+    background-image: url("../images/cancel-btn.png");
+    background-color: transparent;
+    border: 0;
+    padding: 14px 80px 14px 65px;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    color: #000;
+    transition: 0.5s all ease;
+}
+
+#modals .modal-footer .cancel:hover{
+    background-image: url("../images/cancel-btn-hover.png");
+    color: #fff;
+}
+
 #modals .modal-body input{
     border: none;
 }
 
 #modals .modal-body span{
     border: none;
-}
-
-#modals .modal-footer button:hover{
-    background-image: url("../images/buy-btn-hover.png");
-    color: #000;
 }
 
 #footer {

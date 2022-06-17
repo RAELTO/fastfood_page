@@ -17,6 +17,7 @@ var app = new Vue({
                 idm: 1,
                 modal_id: 'hb1',
                 modalw: '#hb1',
+                order_amount: 0,
             },
             {
                 id: 2,
@@ -31,6 +32,7 @@ var app = new Vue({
                 idm: 2,
                 modal_id: 'hb2',
                 modalw: '#hb2',
+                order_amount: 0,
             },
             {
                 id: 3,
@@ -45,6 +47,7 @@ var app = new Vue({
                 idm: 3,
                 modal_id: 'hb3',
                 modalw: '#hb3',
+                order_amount: 0,
             },
             {
                 id: 4,
@@ -59,6 +62,7 @@ var app = new Vue({
                 idm: 4,
                 modal_id: 'hb4',
                 modalw: '#hb4',
+                order_amount: 0,
             },
         ],
         hd: [
@@ -73,6 +77,7 @@ var app = new Vue({
                 idm: 1,
                 modal_id: 'hd1',
                 modalw: '#hd1',
+                order_amount: 0,
             },
             {
                 id: 2,
@@ -85,6 +90,7 @@ var app = new Vue({
                 idm: 2,
                 modal_id: 'hd2',
                 modalw: '#hd2',
+                order_amount: 0,
             },
             {
                 id: 3,
@@ -97,6 +103,7 @@ var app = new Vue({
                 idm: 3,
                 modal_id: 'hd3',
                 modalw: '#hd3',
+                order_amount: 0,
             },
             {
                 id: 4,
@@ -109,13 +116,70 @@ var app = new Vue({
                 idm: 4,
                 modal_id: 'hd4',
                 modalw: '#hd4',
+                order_amount: 0,
             },
-        ]
+        ],
+        employees: [
+            {id: 1, charge: 'Cocinero', password: '1234'}
+        ],
+        cart: [
+            {id: 1, prod: 'TEST1', qty: 1, price: 30000},
+            {id: 2, prod: 'TEST2', qty: 1, price: 30000},
+        ],
+        totalCart: 0,
         //variables below
     },
     methods: {
-        abc(){
-
+        minusbtn(item){
+            if (item.order_amount > 0) {
+                item.order_amount -= 1;
+            } 
         },
+        plusbtn(item){
+            if (item.order_amount < 20) {
+                item.order_amount += 1;
+            } 
+        },
+        closemodal(item){
+            item.order_amount = 0;
+        },
+        cartClick(){
+            if (this.cart.length > 0) {
+                const total = this.cart.map(element => element.price * element.qty).reduce((a, b) => a + b, 0);
+                this.totalCart = new Intl.NumberFormat('es-ES', {style: 'currency',currency: 'COP', minimumFractionDigits: 0}).format(total);
+            }
+        },
+        addToCart(item){
+            if(item.order_amount > 0 && item.order_amount < 20) {
+                this.cart.push({
+                    id: this.cart.length + 1,
+                    prod: item.name,
+                    qty: item.order_amount,
+                    price: item.price,
+                });
+                alert(`Se agregaron ${item.order_amount} ${item.name} al carrito`);
+            }
+        },
+        delFromCart(index){
+            if (this.cart.length > 0) {
+                this.cart.splice(index, 1);
+            }else{
+                alert('Sin pedidos, por favor cierre el carrito si desea agregar un nuevo producto');
+            }
+        },
+        cancel(){
+            if (this.cart.length > 0) {
+                this.cart.splice(0, this.cart.length);
+                this.totalCart = 0;
+                alert('Su pedido fue cancelado satisfactoramente');
+                this.hb.forEach(element => element.order_amount = 0);
+                this.hd.forEach(element => element.order_amount = 0);
+            }else{
+                alert('No hay pedidos, por favor cierre el carrito para agregar un nuevo producto');
+            }
+        },
+        login(){
+
+        }
     }
 });
