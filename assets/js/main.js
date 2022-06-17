@@ -164,24 +164,27 @@ var app = new Vue({
                     price: item.price,
                 });
                 alert(`Se agregaron ${item.order_amount} ${item.name} al carrito`);
+            }else{
+                alert('Debe agregar mínimo un producto');
             }
         },
         delFromCart(index){
-            if (this.cart.length > 0) {
-                this.cart.splice(index, 1);
-            }else{
-                alert('Sin pedidos, por favor cierre el carrito si desea agregar un nuevo producto');
-            }
+            this.cart.splice(index, 1);
+                const total = this.cart.map(element => element.price * element.qty).reduce((a, b) => a + b, 0);
+                this.totalCart = new Intl.NumberFormat('es-ES', {style: 'currency',currency: 'COP', minimumFractionDigits: 0}).format(total);
         },
         cancel(){
             if (this.cart.length > 0) {
                 this.cart.splice(0, this.cart.length);
-                this.totalCart = 0;
+                const total = this.cart.map(element => element.price * element.qty).reduce((a, b) => a + b, 0);
+                this.totalCart = new Intl.NumberFormat('es-ES', {style: 'currency',currency: 'COP', minimumFractionDigits: 0}).format(total);
                 alert('Su pedido fue cancelado satisfactoramente');
                 this.hb.forEach(element => element.order_amount = 0);
                 this.hd.forEach(element => element.order_amount = 0);
             }else{
-                alert('No hay pedidos, por favor cierre el carrito para agregar un nuevo producto');
+                const total = this.cart.map(element => element.price * element.qty).reduce((a, b) => a + b, 0);
+                this.totalCart = new Intl.NumberFormat('es-ES', {style: 'currency',currency: 'COP', minimumFractionDigits: 0}).format(total);
+                alert('No hay pedidos, por favor cierre el carrito y agregue un nuevo producto');
             }
         },
         login(){
