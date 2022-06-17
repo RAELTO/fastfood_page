@@ -19,6 +19,30 @@ body{
     color: #fff;
 }
 
+#navbar a{
+    color: #E29D16;
+}
+
+#navbar a:hover{
+    color: #e1cc09;
+}
+
+#floating-cart-btn .btn-container a{
+    position: fixed; bottom: 10px; right: 10px;
+    padding: 1px;
+    font-size: 25px;
+    background-color: #000;
+    color: #E29D16;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+#floating-cart-btn .btn-container a:hover{
+    background-color: #fff;
+    color: #000;
+}
+
 #products .menu-title{
     color: #E29D16;
 }
@@ -42,14 +66,6 @@ body{
 
 #products .card-body p{
     text-align: justify;
-}
-
-#navbar a{
-    color: #E29D16;
-}
-
-#navbar a:hover{
-    color: #e1cc09;
 }
 
 .text-highlighted{
@@ -228,5 +244,12 @@ body{
     font-size: 20px;
 }
 
+#footer a{
+    color: #E29D16;
+}
+
+#footer a:hover{
+    color: #e1cc09;
+}
 
 
