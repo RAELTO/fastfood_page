@@ -171,15 +171,15 @@ var app = new Vue({
         },
         delFromCart(index){
             this.cart.splice(index, 1);
-                const total = this.cart.map(element => element.price * element.qty).reduce((a, b) => a + b, 0);
-                this.totalCart = new Intl.NumberFormat('es-ES', {style: 'currency',currency: 'COP', minimumFractionDigits: 0}).format(total);
+            const total = this.cart.map(element => element.price * element.qty).reduce((a, b) => a + b, 0);
+            this.totalCart = new Intl.NumberFormat('es-ES', {style: 'currency',currency: 'COP', minimumFractionDigits: 0}).format(total);
         },
         cancel(){
             if (this.cart.length > 0) {
                 this.cart.splice(0, this.cart.length);
                 const total = this.cart.map(element => element.price * element.qty).reduce((a, b) => a + b, 0);
                 this.totalCart = new Intl.NumberFormat('es-ES', {style: 'currency',currency: 'COP', minimumFractionDigits: 0}).format(total);
-                alert('Su pedido fue cancelado satisfactoramente');
+                alert('Su pedido fue cancelado satisfactoriamente');
                 this.hb.forEach(element => element.order_amount = 0);
                 this.hd.forEach(element => element.order_amount = 0);
             }else{
