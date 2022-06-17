@@ -164,6 +164,7 @@ var app = new Vue({
                     price: item.price,
                 });
                 alert(`Se agregaron ${item.order_amount} ${item.name} al carrito`);
+                item.order_amount = 0;
             }else{
                 alert('Debe agregar mínimo un producto');
             }
