@@ -14,6 +14,7 @@ var app = new Vue({
                 Incluye papas a la francesa. 
                 `,
                 price: 30000,
+                idm: 1,
                 modal_id: 'hb1',
                 modalw: '#hb1',
             },
@@ -21,38 +22,41 @@ var app = new Vue({
                 id: 2,
                 img: './assets/images/hb2.jpg',
                 name: 'Hamb. Pollo + Papas',
-                desc: `Deliciosa hamburguesa de pollo, pan tipo brioche, vegetales frescos y salsas de la casa`,
+                desc: `Deliciosa hamburguesa doble carne artesanal, pan tipo brioche y vegetales frescos`,
                 descmodal: `Ingredientes: Pan artesanal (mantequilla, orégano), 150 gr de pollo apanado, 
                 doble queso, tocineta, jamón, cebolla caramelizada, vegetales frescos y salsas de la casa. 
                 Incluye papas a la francesa. 
                 `,
                 price: 30000,
+                idm: 2,
                 modal_id: 'hb2',
                 modalw: '#hb2',
             },
             {
                 id: 3,
                 img: './assets/images/hb3.jpg',
-                name: 'Hamb. 3',
+                name: 'Hamb. De Res + Papas',
                 desc: `Deliciosa hamburguesa doble carne artesanal, pan tipo brioche y vegetales frescos`,
                 descmodal: `Ingredientes: Pan artesanal (mantequilla, orégano), dos carnes de res artesanales 
                 de 125 gr cada una, doble queso, doble tocineta, jamón, cebolla caramelizada, 
                 vegetales frescos y salsas de la casa. 
                 `,
                 price: 30000,
+                idm: 3,
                 modal_id: 'hb3',
                 modalw: '#hb3',
             },
             {
                 id: 4,
                 img: './assets/images/hb4.jpg',
-                name: 'Hamb. 4',
+                name: 'Hamb. Super + Gaseosa',
                 desc: `Deliciosa hamburguesa doble carne artesanal, pan tipo brioche y vegetales frescos`,
                 descmodal: `Ingredientes: Pan artesanal (mantequilla, orégano), dos carnes de res artesanales 
                 de 125 gr cada una, doble queso, doble tocineta, jamón, cebolla caramelizada, 
                 vegetales frescos y salsas de la casa. 
                 `,
                 price: 30000,
+                idm: 4,
                 modal_id: 'hb4',
                 modalw: '#hb4',
             },
@@ -66,6 +70,7 @@ var app = new Vue({
                 descmodal: `Lorem ipsum dolor sit amet consectetur adipisicing elit. 
                 Placeat voluptatibus sapiente aliquid deleniti, rem nisi!`,
                 price: 25000,
+                idm: 1,
                 modal_id: 'hd1',
                 modalw: '#hd1',
             },
@@ -77,6 +82,7 @@ var app = new Vue({
                 descmodal: `Lorem ipsum dolor sit amet consectetur adipisicing elit. 
                 Placeat voluptatibus sapiente aliquid deleniti, rem nisi!`,
                 price: 25000,
+                idm: 2,
                 modal_id: 'hd2',
                 modalw: '#hd2',
             },
@@ -88,6 +94,7 @@ var app = new Vue({
                 descmodal: `Lorem ipsum dolor sit amet consectetur adipisicing elit. 
                 Placeat voluptatibus sapiente aliquid deleniti, rem nisi!`,
                 price: 25000,
+                idm: 3,
                 modal_id: 'hd3',
                 modalw: '#hd3',
             },
@@ -99,6 +106,7 @@ var app = new Vue({
                 descmodal: `Lorem ipsum dolor sit amet consectetur adipisicing elit. 
                 Placeat voluptatibus sapiente aliquid deleniti, rem nisi!`,
                 price: 25000,
+                idm: 4,
                 modal_id: 'hd4',
                 modalw: '#hd4',
             },
