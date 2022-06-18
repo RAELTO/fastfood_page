@@ -191,5 +191,8 @@ var app = new Vue({
         login(){
 
         }
+    },
+    beforeMoun(){
+
     }
 });

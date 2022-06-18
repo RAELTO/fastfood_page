@@ -121,6 +121,33 @@
                                     </div>
                                 </div>
                             </div>
+                            <!-- modals hamburguers -->
+                            <div id="modals">
+                                <div  class="modal fade" :id="item.modal_id" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title text-center" id="exampleModalLabel" v-text="item.name"></h5>
+                                                <button @click="closemodal(item)" type="button" class="btn btn-dark" data-bs-dismiss="modal" aria-label="Close"><i class="fas fa-times"></i></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <img :src="item.img" class="card-img-top" alt="hd4">
+                                                <h4>Descripción:</h4>
+                                                <p v-text="item.descmodal"></p>
+                                                <div class="input-group mb-3">
+                                                    <span class="input-group-text bg-dark"><button @click="minusbtn(item)" type="button" class="btn btn-dark"><i class="fas fa-minus"></i></button></span>
+                                                    <input type="number" class="form-control" placeholder="Cantidad" v-model.number="item.order_amount">
+                                                    <span class="input-group-text bg-dark"><button @click="plusbtn(item)" type="button" class="btn btn-dark"><i class="fas fa-plus"></i></button></span>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button @click="addToCart(item)" type="button"><strong>COMPRAR</strong></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /modals hamburguers -->
                         </div>
                     </div>
                     <!-- /hamburgers -->
@@ -151,6 +178,33 @@
                                     </div>
                                 </div>
                             </div>
+                            <!-- modals hotdogs -->
+                            <div id="modals">
+                                <div class="modal fade" :id="item.modal_id" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" v-for="(item, index) in hd" :key="item.idm">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title text-center" id="exampleModalLabel" v-text="item.name"></h5>
+                                                <button @click="closemodal(item)" type="button" class="btn btn-dark" data-bs-dismiss="modal" aria-label="Close"><i class="fas fa-times"></i></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <img :src="item.img" class="card-img-top" alt="hd4">
+                                                <h4>Descripción:</h4>
+                                                <p v-text="item.descmodal"></p>
+                                                <div class="input-group mb-3">
+                                                    <span class="input-group-text bg-dark"><button @click="minusbtn(item)" type="button" class="btn btn-dark"><i class="fas fa-minus"></i></button></span>
+                                                    <input type="number" class="form-control" placeholder="Cantidad" v-model.number="item.order_amount">
+                                                    <span class="input-group-text bg-dark"><button @click="plusbtn(item)" type="button" class="btn btn-dark"><i class="fas fa-plus"></i></button></span>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button @click="addToCart(item)" type="button"><strong>COMPRAR</strong></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /modals hotdogs-->
                         </div>
                     </div>
                     <!-- /hotdogs here -->
@@ -158,64 +212,7 @@
             </section>
                         
             <!-- Modals -->
-            <section id="modals" v-if="hb.length && hb.length">
-                
-                <div>
-                    <!-- modals hamburguers -->
-                    <div class="modal fade" :id="item.modal_id" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" v-for="(item, index) in hb" :key="item.idm">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title text-center" id="exampleModalLabel" v-text="item.name"></h5>
-                                    <button @click="closemodal(item)" type="button" class="btn btn-dark" data-bs-dismiss="modal" aria-label="Close"><i class="fas fa-times"></i></button>
-                                </div>
-                                <div class="modal-body">
-                                    <img :src="item.img" class="card-img-top" alt="hd4">
-                                    <h4>Descripción:</h4>
-                                    <p v-text="item.descmodal"></p>
-                                    <div class="input-group mb-3">
-                                        <span class="input-group-text bg-dark"><button @click="minusbtn(item)" type="button" class="btn btn-dark"><i class="fas fa-minus"></i></button></span>
-                                        <input type="number" class="form-control" placeholder="Cantidad" v-model.number="item.order_amount">
-                                        <span class="input-group-text bg-dark"><button @click="plusbtn(item)" type="button" class="btn btn-dark"><i class="fas fa-plus"></i></button></span>
-                                    </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <button @click="addToCart(item)" type="button"><strong>COMPRAR</strong></button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- /modals hamburguers -->
-                </div>
-
-                
-                <div>
-                    <!-- modals hotdogs -->
-                    <div class="modal fade" :id="item.modal_id" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" v-for="(item, index) in hd" :key="item.idm">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title text-center" id="exampleModalLabel" v-text="item.name"></h5>
-                                    <button @click="closemodal(item)" type="button" class="btn btn-dark" data-bs-dismiss="modal" aria-label="Close"><i class="fas fa-times"></i></button>
-                                </div>
-                                <div class="modal-body">
-                                    <img :src="item.img" class="card-img-top" alt="hd4">
-                                    <h4>Descripción:</h4>
-                                    <p v-text="item.descmodal"></p>
-                                    <div class="input-group mb-3">
-                                        <span class="input-group-text bg-dark"><button @click="minusbtn(item)" type="button" class="btn btn-dark"><i class="fas fa-minus"></i></button></span>
-                                        <input type="number" class="form-control" placeholder="Cantidad" v-model.number="item.order_amount">
-                                        <span class="input-group-text bg-dark"><button @click="plusbtn(item)" type="button" class="btn btn-dark"><i class="fas fa-plus"></i></button></span>
-                                    </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <button @click="addToCart(item)" type="button"><strong>COMPRAR</strong></button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- /modals hotdogs-->
-                </div>
+            <section id="modals" v-if="hb.length && hb.length"> 
                 
                 <!--Modal login-->
                 <div class="modal fade" id="login" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
