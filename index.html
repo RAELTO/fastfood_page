@@ -136,7 +136,7 @@
                                                 <p v-text="item.descmodal"></p>
                                                 <div class="input-group mb-3">
                                                     <span class="input-group-text bg-dark"><button @click="minusbtn(item)" type="button" class="btn btn-dark"><i class="fas fa-minus"></i></button></span>
-                                                    <input type="number" class="form-control" placeholder="Cantidad" v-model.number="item.order_amount">
+                                                    <input type="number" min="0" max="20" class="form-control" placeholder="Cantidad" v-model.number="item.order_amount">
                                                     <span class="input-group-text bg-dark"><button @click="plusbtn(item)" type="button" class="btn btn-dark"><i class="fas fa-plus"></i></button></span>
                                                 </div>
                                             </div>
@@ -193,7 +193,7 @@
                                                 <p v-text="item.descmodal"></p>
                                                 <div class="input-group mb-3">
                                                     <span class="input-group-text bg-dark"><button @click="minusbtn(item)" type="button" class="btn btn-dark"><i class="fas fa-minus"></i></button></span>
-                                                    <input type="number" class="form-control" placeholder="Cantidad" v-model.number="item.order_amount">
+                                                    <input type="number" min="0" max="20" class="form-control" placeholder="Cantidad" v-model.number="item.order_amount">
                                                     <span class="input-group-text bg-dark"><button @click="plusbtn(item)" type="button" class="btn btn-dark"><i class="fas fa-plus"></i></button></span>
                                                 </div>
                                             </div>
