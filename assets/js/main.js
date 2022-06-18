@@ -134,6 +134,8 @@ var app = new Vue({
         ],
         totalCart: 0,
         //variables below
+        logtrigger: '',
+        
     },
     methods: {
         minusbtn(item){

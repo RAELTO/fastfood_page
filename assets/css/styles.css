@@ -240,6 +240,10 @@ body{
     height: 40px;
 }
 
+#carrito tbody img:hover{
+    border: 2px solid #E29D16;
+}
+
 #carrito tbody td{
     padding: 10px;
 }
