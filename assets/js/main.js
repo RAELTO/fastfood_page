@@ -17,7 +17,7 @@ var app = new Vue({
                 idm: 1,
                 modal_id: 'hb1',
                 modalw: '#hb1',
-                order_amount: 0,
+                order_amount: 1,
             },
             {
                 id: 2,
@@ -32,7 +32,7 @@ var app = new Vue({
                 idm: 2,
                 modal_id: 'hb2',
                 modalw: '#hb2',
-                order_amount: 0,
+                order_amount: 1,
             },
             {
                 id: 3,
@@ -47,7 +47,7 @@ var app = new Vue({
                 idm: 3,
                 modal_id: 'hb3',
                 modalw: '#hb3',
-                order_amount: 0,
+                order_amount: 1,
             },
             {
                 id: 4,
@@ -62,7 +62,7 @@ var app = new Vue({
                 idm: 4,
                 modal_id: 'hb4',
                 modalw: '#hb4',
-                order_amount: 0,
+                order_amount: 1,
             },
         ],
         hd: [
@@ -77,7 +77,7 @@ var app = new Vue({
                 idm: 1,
                 modal_id: 'hd1',
                 modalw: '#hd1',
-                order_amount: 0,
+                order_amount: 1,
             },
             {
                 id: 2,
@@ -90,7 +90,7 @@ var app = new Vue({
                 idm: 2,
                 modal_id: 'hd2',
                 modalw: '#hd2',
-                order_amount: 0,
+                order_amount: 1,
             },
             {
                 id: 3,
@@ -103,7 +103,7 @@ var app = new Vue({
                 idm: 3,
                 modal_id: 'hd3',
                 modalw: '#hd3',
-                order_amount: 0,
+                order_amount: 1,
             },
             {
                 id: 4,
@@ -116,15 +116,15 @@ var app = new Vue({
                 idm: 4,
                 modal_id: 'hd4',
                 modalw: '#hd4',
-                order_amount: 0,
+                order_amount: 1,
             },
         ],
         employees: [
             {id: 1, charge: 'Cocinero', password: '1234'}
         ],
         cart: [
-            {id: 1, prod: 'TEST1', qty: 1, price: 30000},
-            {id: 2, prod: 'TEST2', qty: 1, price: 30000},
+            {img: './assets/images/test.png', prod: 'TEST1', qty: 1, price: 10000},
+            {img: './assets/images/test.png', prod: 'TEST2', qty: 1, price: 15000},
         ],
         cheftable: [
             {id: 1, order: 'abcd', qty: 0, status: 'Completado'},
@@ -147,7 +147,7 @@ var app = new Vue({
             } 
         },
         closemodal(item){
-            item.order_amount = 0;
+            item.order_amount = 1;
         },
         cartClick(){
             if (this.cart.length > 0) {
@@ -157,14 +157,33 @@ var app = new Vue({
         },
         addToCart(item){
             if(item.order_amount > 0 && item.order_amount < 20) {
+
                 this.cart.push({
-                    id: this.cart.length + 1,
+                    img: item.img,
                     prod: item.name,
                     qty: item.order_amount,
                     price: item.price,
                 });
+
+                /*acc -> accumulator; cv -> current value*/
+                this.cart = this.cart.reduce((acc, cv) => {
+                    const elementExists = acc.find(e => e.prod === cv.prod);
+                    if (elementExists) {
+                    return acc.map((e) => {
+                        if (e.prod === cv.prod) {
+                        return {
+                            ...e,
+                            qty: e.qty + cv.qty
+                        }
+                        }
+                        return e;
+                    });
+                    }
+                    return [...acc, cv];
+                }, []);
                 alert(`Se agregaron ${item.order_amount} ${item.name} al carrito`);
-                item.order_amount = 0;
+                item.order_amount = 1;
+
             }else{
                 alert('Debe agregar mínimo un producto');
             }
@@ -180,8 +199,8 @@ var app = new Vue({
                 const total = this.cart.map(element => element.price * element.qty).reduce((a, b) => a + b, 0);
                 this.totalCart = new Intl.NumberFormat('es-ES', {style: 'currency',currency: 'COP', minimumFractionDigits: 0}).format(total);
                 alert('Su pedido fue cancelado satisfactoriamente');
-                this.hb.forEach(element => element.order_amount = 0);
-                this.hd.forEach(element => element.order_amount = 0);
+                this.hb.forEach(element => element.order_amount = 1);
+                this.hd.forEach(element => element.order_amount = 1);
             }else{
                 const total = this.cart.map(element => element.price * element.qty).reduce((a, b) => a + b, 0);
                 this.totalCart = new Intl.NumberFormat('es-ES', {style: 'currency',currency: 'COP', minimumFractionDigits: 0}).format(total);

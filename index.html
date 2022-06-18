@@ -259,15 +259,17 @@
                                 <div class="table-responsive">
                                     <table class="table table-dark table-hover">
                                         <thead class="text-center">
-                                        <tr>
-                                            <th>Producto</th>
-                                            <th>cantidad</th>
-                                            <th>Precio</th>
-                                            <th>Eliminar</th>
-                                        </tr>
+                                            <tr>
+                                                <th>Producto</th>
+                                                <th>Nombre</th>
+                                                <th>cantidad</th>
+                                                <th>Precio</th>
+                                                <th>Eliminar</th>
+                                            </tr>
                                         </thead>
                                         <tbody class="text-center"  v-if="cart.length">
-                                            <tr v-for="(item, index) in cart" :key="item.id">
+                                            <tr v-for="(item, index) in cart">
+                                                <td><img :src="item.img" alt="product"></td>
                                                 <td v-text="item.prod"></td>
                                                 <td v-text="item.qty"></td>
                                                 <td v-text="item.price"></td>
@@ -275,7 +277,7 @@
                                             </tr>
                                         </tbody>
                                         <tbody v-else>
-                                            <td colspan="4" class="text-center">No hay pedidos agregados</td>
+                                            <td colspan="5" class="text-center">No hay pedidos agregados</td>
                                         </tbody>
                                     </table>
                                 </div>
