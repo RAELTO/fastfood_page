@@ -135,7 +135,7 @@ var app = new Vue({
         totalCart: 0,
         //variables below
         logtrigger: '',
-        
+        fcartN: 0,
     },
     methods: {
         minusbtn(item){
@@ -159,7 +159,7 @@ var app = new Vue({
         },
         addToCart(item){
             if(item.order_amount > 0 && item.order_amount < 20) {
-
+                
                 this.cart.push({
                     img: item.img,
                     prod: item.name,
@@ -183,6 +183,9 @@ var app = new Vue({
                     }
                     return [...acc, cv];
                 }, []);
+
+                this.fcartN = this.cart.length;
+
                 alert(`Se agregaron ${item.order_amount} ${item.name} al carrito`);
                 item.order_amount = 1;
 
@@ -194,6 +197,7 @@ var app = new Vue({
             this.cart.splice(index, 1);
             const total = this.cart.map(element => element.price * element.qty).reduce((a, b) => a + b, 0);
             this.totalCart = new Intl.NumberFormat('es-ES', {style: 'currency',currency: 'COP', minimumFractionDigits: 0}).format(total);
+            this.fcartN = this.cart.length;
         },
         cancel(){
             if (this.cart.length > 0) {
@@ -203,6 +207,7 @@ var app = new Vue({
                 alert('Su pedido fue cancelado satisfactoriamente');
                 this.hb.forEach(element => element.order_amount = 1);
                 this.hd.forEach(element => element.order_amount = 1);
+                this.fcartN = this.cart.length;
             }else{
                 const total = this.cart.map(element => element.price * element.qty).reduce((a, b) => a + b, 0);
                 this.totalCart = new Intl.NumberFormat('es-ES', {style: 'currency',currency: 'COP', minimumFractionDigits: 0}).format(total);

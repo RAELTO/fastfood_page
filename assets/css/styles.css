@@ -29,18 +29,19 @@ body{
 
 #floating-cart-btn .btn-container a{
     position: fixed; bottom: 10px; right: 10px;
-    padding: 1px;
-    font-size: 25px;
+    padding: 8px;
+    padding-right: 40px;
     background-color: #000;
     color: #E29D16;
     width: 40px;
     height: 40px;
-    border-radius: 50%;
+    border-radius: 15px;
 }
 
 #floating-cart-btn .btn-container a:hover{
     background-color: #fff;
     color: #000;
+    font-weight: bold;
 }
 
 #products .menu-title{
