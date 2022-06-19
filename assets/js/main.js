@@ -242,6 +242,8 @@ var app = new Vue({
         },
         closelogin(){
             this.logspan = 0;
+            this.userinput = '';
+            this.passinput = '';
         },
         logout(){
             if (confirm("¿Esta seguro de que desea cerrar sesión?") === true){
