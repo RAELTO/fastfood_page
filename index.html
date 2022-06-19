@@ -229,22 +229,38 @@
                                     <div class="form-floating mb-4">
                                         <input type="text"  class="form-control" id="floatingUser" placeholder="User" required>
                                         <label for="floatingUser">USUARIO</label>
-                                        <!-- <span style="color: red;" v-if="usserP <= 999">Ingrese el usuario </span> -->
+                                        <!-- <span v-if=""></span> -->
                                     </div>
                                     <div class="form-floating mb-4">
-                                        <input type="password" maxlength="4" minlength="4" class="form-control" id="floatingPassword" placeholder="Password" required>
+                                        <input type="password" maxlength="8" minlength="8" class="form-control" id="floatingPassword" placeholder="Password" required>
                                         <label for="floatingPassword">CONTRASEÑA</label>
-                                        <!-- <span style="color: red;" v-if="usserP <= 999">Ingrese un pin correcto</span> -->
+                                        <!-- <span v-if=""></span> -->
                                     </div>
                                 </div>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" data-bs-toggle="modal" data-bs-target="#admon"><strong>INGRESAR</strong></button>
+                                <button @click="login" type="button" data-bs-toggle="modal" data-bs-target="#admon"><strong>INGRESAR</strong></button>
                             </div>
                         </div>
                     </div>
                 </div>
                 <!-- /Modal login -->
+
+                <!-- modal invalid-login -->
+                <div class="modal fade" id="error" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header text-center">
+                                <button type="button" class="btn btn-dark" data-bs-dismiss="modal" aria-label="Close"><i class="fas fa-times"></i></button>
+                            </div>
+                            <div class="modal-body">
+                                <h5 class="text-center"><strong>USUARIO Y O CONTRASEÑA INCORRECTOS</strong></h5>
+                            </div>
+                            <div class="modal-footer"></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /modal invalid-login -->
 
                 <!-- Modal Carrito -->
                 <div class="modal fade" id="carrito" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

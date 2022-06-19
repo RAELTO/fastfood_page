@@ -120,7 +120,8 @@ var app = new Vue({
             },
         ],
         employees: [
-            {id: 1, charge: 'Cocinero', password: '1234'}
+            {id: '1234', charge: 'Cocinero', password: '12345678'},
+            {id: '5678', charge: 'Cocinero', password: '87654321'}
         ],
         cart: [
             {img: './assets/images/test.png', prod: 'TEST1', qty: 1, price: 10000},
@@ -134,8 +135,7 @@ var app = new Vue({
         ],
         totalCart: 0,
         //variables below
-        logtrigger: '',
-        fcartN: 0,
+        fcartN: '',
     },
     methods: {
         minusbtn(item){
@@ -215,7 +215,7 @@ var app = new Vue({
             }
         },
         login(){
-
+            
         }
     },
     beforeMoun(){
