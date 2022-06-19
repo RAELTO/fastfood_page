@@ -56,6 +56,10 @@ body{
     background-color: #E29D16;
 }
 
+#products .card:hover{
+    box-shadow: 0 0 20px #E29D16;
+}
+
 #products .card span{
     border: none;
 }

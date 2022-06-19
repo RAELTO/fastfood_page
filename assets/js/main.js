@@ -121,7 +121,7 @@ var app = new Vue({
         ],
         employees: [
             {id: '1234', charge: 'Cocinero', password: '12345678'},
-            {id: '5678', charge: 'Cocinero', password: '87654321'}
+            {id: '5678', charge: 'Mesero', password: '87654321'}
         ],
         cart: [
             {img: './assets/images/test.png', prod: 'TEST1', qty: 1, price: 10000},
@@ -136,6 +136,10 @@ var app = new Vue({
         totalCart: 0,
         //variables below
         fcartN: '',
+        modaltrigger: 0,
+        logspan: 0,
+        userinput: '',
+        passinput: '',
     },
     methods: {
         minusbtn(item){
@@ -220,9 +224,32 @@ var app = new Vue({
         },
         login(){
 
-        }
-    },
-    beforeMoun(){
+            if (this.userinput.length > 0 && this.passinput.length > 0) {
+                const index = this.employees.findIndex((object) => {
+                    return object.id == this.userinput;
+                });
+    
+                if(index != -1 && this.passinput === this.employees[index].password){
+                    this.modaltrigger = 1;
+                    this.logspan = 0;
+                }else{
+                    this.logspan = 1;
+                }
+            }else{
+                this.logspan = 2;
+            }
 
+        },
+        closelogin(){
+            this.logspan = 0;
+        },
+        logout(){
+            if (confirm("¿Esta seguro de que desea cerrar sesión?") === true){
+                this.modaltrigger = 0;
+                this.logspan = 0;
+                this.userinput = '';
+                this.passinput = '';
+            }
+        }
     }
 });

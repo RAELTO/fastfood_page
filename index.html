@@ -219,48 +219,53 @@
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header text-center">
-                                <h5 class="modal-title text-center" id="exampleModalLabel">Login</h5>
-                                <button type="button" class="btn btn-dark" data-bs-dismiss="modal" aria-label="Close"><i class="fas fa-times"></i></button>
+                                <button @click="closelogin" type="button" class="btn btn-dark" data-bs-dismiss="modal" aria-label="Close"><i class="fas fa-times"></i></button>
+                                <button @click="logout" type="button" class="btn btn-dark" v-if="modaltrigger === 1"><i class="fa-solid fa-right-from-bracket"></i></button>
                             </div>
-                            <div class="modal-body">
+                            <div class="modal-body" v-if="modaltrigger === 0">
                                 <div class="sigIn-formulario text-center" >
                                     <h1 class="sigIn-title mb-3">Hot Durger's</h1>
                                     <img src="assets/images/l1.png" alt="Icono" class="sigIn-Icon ">
                                     <div class="form-floating mb-4">
-                                        <input type="text"  class="form-control" id="floatingUser" placeholder="User" required>
+                                        <input v-model="userinput" @keyup.enter="login" type="text"  class="form-control" id="floatingUser" required>
                                         <label for="floatingUser">USUARIO</label>
-                                        <!-- <span v-if=""></span> -->
                                     </div>
                                     <div class="form-floating mb-4">
-                                        <input type="password" maxlength="8" minlength="8" class="form-control" id="floatingPassword" placeholder="Password" required>
+                                        <input v-model="passinput" @keyup.enter="login" type="password" maxlength="8" minlength="8" class="form-control" id="floatingPassword" required>
                                         <label for="floatingPassword">CONTRASEÑA</label>
-                                        <!-- <span v-if=""></span> -->
+                                        <span v-if="logspan === 1"><strong class="text-danger">USUARIO Y O CONTRASEÑA INCORRECTOS</strong></span>
+                                        <span v-if="logspan === 2"><strong class="text-danger">POR FAVOR INGRESE UN USUARIO Y CONTRASEÑA</strong></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-body" v-if="modaltrigger === 1">
+                                <h5 class="text-center"><strong>Seleccione su cargo</strong></h5>
+                                <div class="row">
+                                    <div class="col-md-6 col-lg-6 mt-3 mb-4">
+                                        <div class="card" data-bs-toggle="modal" data-bs-target="#chef-table">
+                                            <img src="./assets/images/chef.jpg" class="card-img-top" alt="hb4">
+                                            <div class="card-body">
+                                                <h5 class="card-title text-center">CHEF</h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-lg-6 mt-3 mb-4">
+                                        <div class="card" data-bs-toggle="modal" data-bs-target="#waiter-table">
+                                            <img src="./assets/images/mesero.jpg" class="card-img-top" alt="hb4">
+                                            <div class="card-body">
+                                                <h5 class="card-title text-center">MESERO</h5>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="modal-footer">
-                                <button @click="login" type="button" data-bs-toggle="modal" data-bs-target="#admon"><strong>INGRESAR</strong></button>
+                                <button @click="login" type="button" v-if="modaltrigger === 0"><strong>INGRESAR</strong></button>
                             </div>
                         </div>
                     </div>
                 </div>
                 <!-- /Modal login -->
-
-                <!-- modal invalid-login -->
-                <div class="modal fade" id="error" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header text-center">
-                                <button type="button" class="btn btn-dark" data-bs-dismiss="modal" aria-label="Close"><i class="fas fa-times"></i></button>
-                            </div>
-                            <div class="modal-body">
-                                <h5 class="text-center"><strong>USUARIO Y O CONTRASEÑA INCORRECTOS</strong></h5>
-                            </div>
-                            <div class="modal-footer"></div>
-                        </div>
-                    </div>
-                </div>
-                <!-- /modal invalid-login -->
 
                 <!-- Modal Carrito -->
                 <div class="modal fade" id="carrito" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -308,43 +313,8 @@
                 </div>
                 <!-- /Modal Carrito -->
 
-                <!-- modal cocinero & mesero -->
-                <div class="modal fade" id="admon" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header text-center">
-                                <h5 class="modal-title text-center" id="exampleModalLabel">Cargo</h5>
-                                <button type="button" class="btn btn-dark" data-bs-dismiss="modal" aria-label="Close"><i class="fas fa-times"></i></button>
-                            </div>
-                            <div class="modal-body">
-                                <h5 class="text-center"><strong>Seleccione su cargo</strong></h5>
-                                <div class="row">
-                                    <div class="col-md-6 col-lg-6 mt-3 mb-4">
-                                        <div class="card" data-bs-toggle="modal" data-bs-target="#chef-table">
-                                            <img src="./assets/images/chef.jpg" class="card-img-top" alt="hb4">
-                                            <div class="card-body">
-                                                <h5 class="card-title text-center">CHEF</h5>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-lg-6 mt-3 mb-4">
-                                        <div class="card" data-bs-toggle="modal" data-bs-target="#waiter-table">
-                                            <img src="./assets/images/mesero.jpg" class="card-img-top" alt="hb4">
-                                            <div class="card-body">
-                                                <h5 class="card-title text-center">MESERO</h5>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="modal-footer"></div>
-                        </div>
-                    </div>
-                </div>
-                <!-- /modal cocinero & mesero -->
-
                 <!-- modal tabla chef -->
-                <div class="modal fade" id="chef-table" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal fade" id="chef-table" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" v-if="modaltrigger === 1">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header text-center">
@@ -379,7 +349,7 @@
                                 </div>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="back"><strong> Regresar </strong></button>
+                                <button type="button" class="back" data-bs-toggle="modal" data-bs-target="#login"><strong> Regresar </strong></button>
                             </div>
                         </div>
                     </div>
@@ -387,7 +357,7 @@
                 <!-- /modal tabla chef -->
 
                 <!-- modal tabla mesero -->
-                <div class="modal fade" id="waiter-table" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal fade" id="waiter-table" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" v-if="modaltrigger === 1">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header text-center">
@@ -422,7 +392,7 @@
                                 </div>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="back"><strong> Regresar </strong></button>
+                                <button type="button" class="back" data-bs-toggle="modal" data-bs-target="#login"><strong> Regresar </strong></button>
                             </div>
                         </div>
                     </div>
