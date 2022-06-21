@@ -125,10 +125,7 @@ var app = new Vue({
         ],
         cart: [],//empty array that will store the client's orders
         cheftable: [
-            {id: 1, order: [
-                {prod: 'TEST1', qty: 1},
-                {prod: 'TEST2', qty: 1},
-            ], status: 'Completado'},
+            
         ],
         waitertable: [
             {id: 1, order: 'efgh', qty: 0, status: 'Pendiente'},
