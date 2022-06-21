@@ -133,7 +133,7 @@ var app = new Vue({
         totalCart: 0,
         //variables below
         fcartN: '',
-        modaltrigger: 1,
+        modaltrigger: 0,
         logspan: 0,
         userinput: '',
         passinput: '',
