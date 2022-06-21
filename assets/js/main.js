@@ -123,12 +123,12 @@ var app = new Vue({
             {id: '1234', charge: 'Cocinero', password: '12345678'},
             {id: '5678', charge: 'Mesero', password: '87654321'}
         ],
-        cart: [
-            {img: './assets/images/test.png', prod: 'TEST1', qty: 1, price: 10000},
-            {img: './assets/images/test.png', prod: 'TEST2', qty: 1, price: 15000},
-        ],
+        cart: [],//empty array that will store the client's orders
         cheftable: [
-            {id: 1, order: 'abcd', qty: 0, status: 'Completado'},
+            {id: 1, order: [
+                {prod: 'TEST1', qty: 1},
+                {prod: 'TEST2', qty: 1},
+            ], status: 'Completado'},
         ],
         waitertable: [
             {id: 1, order: 'efgh', qty: 0, status: 'Pendiente'},
@@ -136,7 +136,7 @@ var app = new Vue({
         totalCart: 0,
         //variables below
         fcartN: '',
-        modaltrigger: 0,
+        modaltrigger: 1,
         logspan: 0,
         userinput: '',
         passinput: '',
@@ -197,6 +197,30 @@ var app = new Vue({
                 alert('Debe agregar mínimo un producto');
             }
         },
+        sendorder(){
+            if (this.cart.length > 0) {
+
+                this.cheftable.push({
+                    id: this.cheftable.length + 1,
+                    order: [],
+                    status: 'Pendiente'
+                });
+
+                const cheforder = this.cart.map(e => {
+                    return{
+                        prod: e.prod,
+                        qty: e.qty
+                    }
+                });
+
+                this.cheftable[this.cheftable.length - 1].order = cheforder;
+                
+                alert('Tu pedido se está preparando, lo recibirás muy pronto');
+                this.cancel();
+            }else{
+                alert('No hay productos en el carrito, por favor agregue al menos uno');
+            }
+        },
         delFromCart(index){
             this.cart.splice(index, 1);
             const total = this.cart.map(element => element.price * element.qty).reduce((a, b) => a + b, 0);
@@ -212,14 +236,13 @@ var app = new Vue({
                 this.cart.splice(0, this.cart.length);
                 const total = this.cart.map(element => element.price * element.qty).reduce((a, b) => a + b, 0);
                 this.totalCart = new Intl.NumberFormat('es-ES', {style: 'currency',currency: 'COP', minimumFractionDigits: 0}).format(total);
-                alert('Su pedido fue cancelado satisfactoriamente');
+                //alert('Su pedido fue cancelado satisfactoriamente');
                 this.hb.forEach(element => element.order_amount = 1);
                 this.hd.forEach(element => element.order_amount = 1);
                 this.fcartN = '';
             }else{
                 const total = this.cart.map(element => element.price * element.qty).reduce((a, b) => a + b, 0);
                 this.totalCart = new Intl.NumberFormat('es-ES', {style: 'currency',currency: 'COP', minimumFractionDigits: 0}).format(total);
-                alert('No hay pedidos, por favor cierre el carrito y agregue un nuevo producto');
             }
         },
         login(){

@@ -41,7 +41,7 @@
                                     <a class="nav-link active" aria-current="page" href="#" data-bs-toggle="modal" data-bs-target="#login">Login</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a @click="cartClick" class="nav-link text-highlightedd" href="#" data-bs-toggle="modal" data-bs-target="#carrito">Carrito <i class="fas fa-shopping-cart"></i></a>
+                                    <a @click="cartClick" class="nav-link text-highlightedd" href="#" data-bs-toggle="modal" data-bs-target="#carrito">Carrito <i class="fas fa-shopping-cart"></i> <strong v-text="fcartN" class="text-light"></strong></a>
                                 </li>
                             </ul>
                         </div>
@@ -87,7 +87,7 @@
             <section id="floating-cart-btn">
                 <div class="btn-container fixed-bottom">
                     <div class="cart-float-btn">
-                        <a @click="cartClick" href="#" class="floating-cart text-center" data-bs-toggle="modal" data-bs-target="#carrito"><i class="fas fa-shopping-cart" v-text="fcartN"></i></a>
+                        <a @click="cartClick" href="#" class="floating-cart text-center" data-bs-toggle="modal" data-bs-target="#carrito"><i class="fas fa-shopping-cart"></i>  <strong v-text="fcartN" class="text-danger"></strong></a>
                     </div>
                 </div>
             </section>
@@ -117,7 +117,7 @@
                                             <input type="number" min="0" max="20" class="form-control" placeholder="Cantidad" v-model.number="item.order_amount">
                                             <span class="input-group-text bg-dark"><button @click="plusbtn(item)" type="button" class="btn btn-dark"><i class="fas fa-plus"></i></button></span>
                                         </div>
-                                        <div><button @click="addToCart(item)" type="button" class="col-12 btn btn-dark">Agregar</button></div>
+                                        <div class="btnadd"><button @click="addToCart(item)" type="button" class="col-12 btn btn-dark">Agregar</button></div>
                                     </div>
                                 </div>
                             </div>
@@ -141,7 +141,7 @@
                                                 </div>
                                             </div>
                                             <div class="modal-footer">
-                                                <button @click="addToCart(item)" type="button"><strong>COMPRAR</strong></button>
+                                                <button @click="addToCart(item)" type="button"><strong>AGREGRAR</strong></button>
                                             </div>
                                         </div>
                                     </div>
@@ -174,7 +174,7 @@
                                             <input type="number" min="0" max="20" class="form-control" placeholder="Cantidad" v-model.number="item.order_amount">
                                             <span class="input-group-text bg-dark"><button @click="plusbtn(item)" type="button" class="btn btn-dark"><i class="fas fa-plus"></i></button></span>
                                         </div>
-                                        <div><button @click="addToCart(item)" type="button" class="col-12 btn btn-dark">Agregar</button></div>
+                                        <div class="btnadd"><button @click="addToCart(item)" type="button" class="col-12 btn btn-dark">Agregar</button></div>
                                     </div>
                                 </div>
                             </div>
@@ -198,7 +198,7 @@
                                                 </div>
                                             </div>
                                             <div class="modal-footer">
-                                                <button @click="addToCart(item)" type="button"><strong>COMPRAR</strong></button>
+                                                <button @click="addToCart(item)" type="button" class="agregarc"><strong>AGREGAR</strong></button>
                                             </div>
                                         </div>
                                     </div>
@@ -210,6 +210,7 @@
                     <!-- /hotdogs here -->
                 </div>
             </section>
+            <!-- /products -->
                         
             <!-- Modals -->
             <section id="modals" v-if="hb.length && hb.length"> 
@@ -220,7 +221,7 @@
                         <div class="modal-content">
                             <div class="modal-header text-center">
                                 <button @click="closelogin" type="button" class="btn btn-dark" data-bs-dismiss="modal" aria-label="Close"><i class="fas fa-times"></i></button>
-                                <button @click="logout" type="button" class="btn btn-dark" v-if="modaltrigger === 1"><i class="fa-solid fa-right-from-bracket"></i></button>
+                                <button @click="logout" type="button" class="btn btn-dark logout" v-if="modaltrigger === 1">Logout <i class="fa-solid fa-right-from-bracket"></i></button>
                             </div>
                             <div class="modal-body" v-if="modaltrigger === 0">
                                 <div class="sigIn-formulario text-center" >
@@ -305,8 +306,9 @@
                                 <h4 class="text-center"><strong>TOTAL:</strong> <span><strong v-text="totalCart">$0.000</strong></span></h4>
                             </div>
                             <div class="modal-footer">
-                                <button type="button"><strong>Ir a pagar</strong></button>
-                                <button @click="cancel" type="button" class="cancel"><strong>Cancelar</strong></button>
+                                <button @click="sendorder" type="button"><strong>Ir a pagar</strong></button>
+                                <button @click="cancel" type="button" class="cancel" v-if="cart.length > 0"><strong>Cancelar</strong></button>
+                                <button type="button" class="cancel" data-bs-dismiss="modal" aria-label="Close" v-else><strong>Cancelar</strong></button>
                             </div>
                         </div>
                     </div>
@@ -324,26 +326,41 @@
                             <div class="modal-body">
                                 <h4>Pedidos:</h4>
                                 <div class="table-responsive">
-                                    <table class="table table-dark table-hover">
+                                    <table class="table table-dark">
                                         <thead class="text-center">
                                         <tr>
+                                            <th>Pedido #</th>
                                             <th>Pedido</th>
-                                            <th>Cantidad</th>
                                             <th>Estado</th>
                                             <th>Acciones</th>
                                         </tr>
                                         </thead>
                                         <tbody class="text-center"  v-if="cheftable.length">
                                             <tr v-for="(item, index) in cheftable" :key="item.id">
-                                                <td v-text="item.order"></td>
-                                                <td v-text="item.qty"></td>
-                                                <td v-if="item.status === 'Completado'"><span v-text="item.status" class="text-success"></span></td>
-                                                <td v-else><span><strong v-text="item.status" class="text-danger"></strong></span></td>
-                                                <td><button class="btn btn-success">OK <i class="fas fa-check"></i></button></td>   
+                                                <td class="pt-5" v-text="item.id"></td>
+                                                <td>
+                                                    <table class="table table-dark">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Producto</th>
+                                                                <th>Cantidad</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody class="text-ceter">
+                                                            <tr v-for="(order, index) in item.order">
+                                                                <td v-text="order.prod"></td>
+                                                                <td v-text="order.qty"></td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </td>
+                                                <td class="pt-5" v-if="item.status === 'Completado'"><span v-text="item.status" class="text-success"></span></td>
+                                                <td class="pt-5" v-else><span><strong v-text="item.status" class="text-danger"></strong></span></td>
+                                                <td class="pt-5"><button class="btn btn-success">OK <i class="fas fa-check"></i></button></td>   
                                             </tr>
                                         </tbody>
                                         <tbody v-else>
-                                            <td colspan="4" class="text-center">No hay pedidos agregados</td>
+                                            <td colspan="3" class="text-center">No hay pedidos agregados</td>
                                         </tbody>
                                     </table>
                                 </div>
