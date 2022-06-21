@@ -277,6 +277,29 @@ body{
     padding: 10px;
 }
 
+/* START-PAGOS */
+#pago .modal-body h4{
+    font-weight: bold;
+}
+
+#pago tbody img{
+    width: 40px;
+    height: 40px;
+}
+
+#pago tbody img:hover{
+    border: 2px solid #E29D16;
+}
+
+#pago tbody td{
+    padding: 10px;
+}
+
+#pago .form-check{
+    font-size: 24px;
+}
+/* END-PAGOS */
+
 #footer {
     background: linear-gradient(90deg, #0b0b0b, #1b1c1d 25%, #232526);
 }
