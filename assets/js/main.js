@@ -121,7 +121,8 @@ var app = new Vue({
         ],
         employees: [
             {id: '1234', charge: 'Cocinero', password: '12345678'},
-            {id: '5678', charge: 'Mesero', password: '87654321'}
+            {id: '5678', charge: 'Mesero', password: '87654321'},
+            {id: '3333', charge: 'Admin', password: '3333'},
         ],
         cart: [],//empty array that will store the client's orders
         cheftable: [
