@@ -329,23 +329,18 @@
                                 <h4 class="text-center"><strong>SELECCIONA TU MÉTODO DE PAGO</strong></h4>
                                 <div class="row text-center">
                                     <div class="col-12 form-check form-check-inline mt-2 mb-2 mw-100">
-                                        <label class="form-check-label" for="inlineRadio1">
-                                            <img src="./assets/images/credit.png" alt="">
-                                        </label>
-                                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="tarjeta">
+                                        <label class="radio-inline"> <input v-model="paymethod" type="radio" name="conv" id="conv" value="tarjeta" checked><img src="./assets/images/nequi.png" alt="" class="ms-2"></label>
                                     </div>
                                     <div class="col-12 form-check form-check-inline mt-2 mb-2">
-                                        <label class="form-check-label radio-label" for="inlineRadio2">
-                                            <img src="./assets/images/nequi.png" alt="">
-                                        </label>
-                                        <input class="form-check-input radio-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="nequi">
+                                        <label class="radio-inline"> <input v-model="paymethod" type="radio" name="conv" id="conv" value="nequi"><img src="./assets/images/credit.png" alt="" class="ms-2"></label>
                                     </div>
                                 </div>
                                 <h4 class="text-center"><strong>TOTAL A PAGAR: </strong><span><strong v-text="totalCart"></strong></span></h4>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" @click="sendorder"  data-bs-dismiss="modal"  aria-label="close"><strong>Pagar Pedido</strong></button>
-                                <button type="button" class="cancel" data-bs-dismiss="modal"  aria-label="close"><strong>Cancelar</strong></button>
+                                <button type="button" @click="sendorder" v-if="paymethod.length <= 0"><strong>Pagar Pedido</strong></button>
+                                <button type="button" @click="sendorder" data-bs-dismiss="modal"  aria-label="close" v-else><strong>Pagar Pedido</strong></button>
+                                <button type="button" @click="cancelpurchase" class="cancel" data-bs-dismiss="modal"  aria-label="close"><strong>Cancelar</strong></button>
                             </div>
                         </div>
                     </div>
@@ -366,16 +361,16 @@
                                     <table class="table table-dark">
                                         <thead class="text-center">
                                         <tr>
-                                            <th>Pedido #</th>
+                                            <!-- <th>Pedido #</th> -->
                                             <th>Pedido</th>
                                             <th>Estado</th>
                                             <th>Acciones</th>
                                         </tr>
                                         </thead>
                                         <tbody class="text-center"  v-if="order.length">
-                                            <tr v-for="(item, index) in order" :key="item.id">
-                                                <td class="pt-5" v-text="item.id"></td>
-                                                <td>
+                                            <tr v-for="(item, index) in order" :key="item.id" v-if="item.statusAdmin === 'Pagado'">
+                                                <!-- <td class="pt-5" v-text="item.id"></td> -->
+                                                <td class="pt-5">
                                                     <table class="table table-dark">
                                                         <thead>
                                                             <tr>
@@ -391,8 +386,8 @@
                                                         </tbody>
                                                     </table>
                                                 </td>
-                                                <td class="pt-5" v-if="item.status === 'Completado'"><span v-text="item.status" class="text-success"></span></td>
-                                                <td class="pt-5" v-else><span><strong v-text="item.status" class="text-danger"></strong></span></td>
+                                                <td class="pt-5" v-if="item.statusEmpl === 'Completado'"><span v-text="item.status" class="text-success"></span></td>
+                                                <td class="pt-5" v-else><span><strong v-text="item.statusEmpl" class="text-danger"></strong></span></td>
                                                 <td class="pt-5"><button class="btn btn-success">OK <i class="fas fa-check"></i></button></td>   
                                             </tr>
                                         </tbody>
@@ -430,12 +425,12 @@
                                             <th>Acciones</th>
                                         </tr>
                                         </thead>
-                                        <tbody class="text-center"  v-if="waitertable.length">
+                                        <tbody class="text-center"  v-if="waitertable.length && order.statusAdmin === 'Pagado'">
                                             <tr v-for="(item, index) in waitertable" :key="item.id">
                                                 <td v-text="item.order"></td>
                                                 <td v-text="item.qty"></td>
-                                                <td v-if="item.status === 'Completado'"><span v-text="item.status" class="text-success"></span></td>
-                                                <td v-else><span><strong v-text="item.status" class="text-danger"></strong></span></td>
+                                                <td v-if="item.statusEmpl === 'Completado'"><span v-text="item.status" class="text-success"></span></td>
+                                                <td v-else><span><strong v-text="item.statusEmpl" class="text-danger"></strong></span></td>
                                                 <td><button class="btn btn-success">OK <i class="fas fa-check"></i></button></td>   
                                             </tr>
                                         </tbody>
@@ -468,17 +463,55 @@
                                         <thead class="text-center">
                                         <tr>
                                             <th>Pedido</th>
-                                            <th>Cantidad</th>
+                                            <th>Total Pagado</th>
+                                            <th>Total Cancelado</th>
                                             <th>Estado</th>
                                         </tr>
                                         </thead>
                                         <tbody class="text-center"  v-if="order.length">
                                             <tr v-for="(item, index) in order" :key="item.id">
-                                                <td v-text="item.order"></td>
-                                                <td v-text="item.qty"></td>
-                                                <td v-if="item.status === 'Completado'"><span v-text="item.status" class="text-success"></span></td>
-                                                <td v-else><span><strong v-text="item.status" class="text-danger"></strong></span></td>
-                                                <td><button class="btn btn-success">OK <i class="fas fa-check"></i></button></td>   
+                                                <td>
+                                                    <table class="table table-dark">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Producto</th>
+                                                                <th>Cantidad</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody class="text-ceter">
+                                                            <tr v-for="(order, index) in item.order">
+                                                                <td v-text="order.prod"></td>
+                                                                <td v-text="order.qty"></td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </td>
+                                                <td v-text="item.totalp"></td>
+                                                <td v-text="item.totalc"></td>
+                                                <td v-if="item.statusAdmin === 'Pagado'"><span v-text="item.statusAdmin" class="text-success"></span></td>
+                                                <td v-else><span><strong v-text="item.statusAdmin" class="text-danger"></strong></span></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="1">Totales:</td>
+                                                <td colspan="1" v-text="totalsales" class="text-success"></td>
+                                                <td colspan="1" v-text="nonsold" class="text-danger"></td>
+                                                <td colspan="1" > </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2">Total Ordenes Concretadas:</td>
+                                                <td colspan="2" v-text="npurchased" class="text-success"></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2">Valor Total Ventas:</td>
+                                                <td colspan="2" v-text="totalsales" class="text-success"></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2">Total Ordenes Cancelados:</td>
+                                                <td colspan="2" class="text-danger" v-text="totalcancelled"></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2">Valor Ventas No Concretadas:</td>
+                                                <td colspan="2" class="text-danger" v-text="nonsold"></td>
                                             </tr>
                                         </tbody>
                                         <tbody v-else>
@@ -494,41 +527,6 @@
                     </div>
                 </div>
                 <!-- /modal tabla admin -->
-
-                <!-- Modal Pago -->
-                <!-- <div class="modal fade" id="pago" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header text-center">
-                                <h5 class="modal-title text-center" id="exampleModalLabel">Pagos</h5>
-                                <button type="button" class="btn btn-dark" data-bs-dismiss="modal" aria-label="Close"><i class="fas fa-times"></i></button>
-                            </div>
-                            <div class="modal-body">
-                                <h4 class="text-center"><strong>SELECCIONA TU MÉTODO DE PAGO</strong></h4>
-                                <div class="row text-center">
-                                    <div class="col-12 form-check form-check-inline mt-2 mb-2 mw-100">
-                                        <label class="form-check-label" for="inlineRadio1">
-                                            <img src="./assets/images/credit.png" alt="">
-                                        </label>
-                                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="tarjeta">
-                                    </div>
-                                    <div class="col-12 form-check form-check-inline mt-2 mb-2">
-                                        <label class="form-check-label radio-label" for="inlineRadio2">
-                                            <img src="./assets/images/nequi.png" alt="">
-                                        </label>
-                                        <input class="form-check-input radio-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="nequi">
-                                    </div>
-                                </div>
-                                <h4 class="text-center"><strong>TOTAL: </strong><span><strong v-text="totalCart"></strong></span></h4>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" @click="sendorder"  data-bs-dismiss="modal"  aria-label="close"><strong>Pagar Pedido</strong></button>
-                                <button type="button" class="cancel" data-bs-dismiss="modal"  aria-label="close"><strong>Cancelar</strong></button>
-                            </div>
-                        </div>
-                    </div>
-                </div> -->
-                <!-- /Modal pago -->
 
             </section>
             <!-- /Modals -->

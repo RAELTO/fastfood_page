@@ -137,6 +137,11 @@ var app = new Vue({
         userinput: '',
         passinput: '',
         ptrigger: 0,
+        paymethod: '',
+        totalsales: 0,
+        totalcancelled: 0,
+        nonsold: 0,
+        npurchased: 0,
     },
     methods: {
         minusbtn(item){
@@ -153,7 +158,6 @@ var app = new Vue({
             item.order_amount = 1;
         },
         closepayments(){
-            this.ptrigger = 0;
         },
         cartClick(){
             if (this.cart.length > 0) {
@@ -205,13 +209,16 @@ var app = new Vue({
             }
             
         },
-        sendorder(){
-            if (this.cart.length > 0) {
-
+        cancelpurchase(){
+            if (confirm("¿Esta seguro de que desea cancelar su compra?") === true){
+                const totalc = this.cart.map(element => element.price * element.qty).reduce((a, b) => a + b, 0);
                 this.order.push({
                     id: this.order.length + 1,
                     order: [],
-                    status: 'Pendiente'
+                    statusEmpl: 'Cancelado',
+                    totalp: 0,
+                    statusAdmin: 'Cancelado',
+                    totalc: totalc,
                 });
 
                 const prodqty = this.cart.map(e => {
@@ -222,9 +229,48 @@ var app = new Vue({
                 });
 
                 this.order[this.order.length - 1].order = prodqty;
-                
-                alert('Tu pedido se está preparando, lo recibirás muy pronto');
+                if (this.order[this.order.length - 1].statusAdmin === 'Cancelado') {
+                    this.totalcancelled += 1;
+                }
+                const sumtotals = this.order.map(element => element.totalc).reduce((a, b) => a + b, 0);
+                this.nonsold = new Intl.NumberFormat('es-ES', {style: 'currency',currency: 'COP', minimumFractionDigits: 0}).format(sumtotals);;
+                alert('Su compra fue cancelada satisfactoriamente');
                 this.cancel();
+            }
+        },
+        sendorder(){
+            if (this.cart.length > 0) {
+
+                if (this.paymethod.length <= 0) {
+                    alert('Por favor seleccione un método de pago');
+                }else{
+                    const totalp = this.cart.map(element => element.price * element.qty).reduce((a, b) => a + b, 0);
+                    this.order.push({
+                        id: this.order.length + 1,
+                        order: [],
+                        statusEmpl: 'Pendiente',
+                        totalp: totalp,
+                        statusAdmin: 'Pagado',
+                        totalc: 0,
+                    });
+                    
+                    const prodqty = this.cart.map(e => {
+                        return{
+                            prod: e.prod,
+                            qty: e.qty
+                        }
+                    });
+    
+                    this.order[this.order.length - 1].order = prodqty;
+                    if (this.order[this.order.length - 1].statusAdmin === 'Pagado') {
+                        this.npurchased += 1;
+                    }
+                    const sumtotals = this.order.map(element => element.totalp).reduce((a, b) => a + b, 0);
+                    this.totalsales = new Intl.NumberFormat('es-ES', {style: 'currency',currency: 'COP', minimumFractionDigits: 0}).format(sumtotals);
+                    
+                    alert('Tu pedido se está preparando, lo recibirás muy pronto');
+                    this.cancel();
+                }
             }else{
                 alert('No hay productos en el carrito, por favor agregue al menos uno');
             }
@@ -249,6 +295,7 @@ var app = new Vue({
                 this.hd.forEach(element => element.order_amount = 1);
                 this.fcartN = '';
                 this.ptrigger = 0;
+                this.paymethod = '';
             }else{
                 alert('No hay productos en el carrito, por favor agregue al menos uno');
                 const total = this.cart.map(element => element.price * element.qty).reduce((a, b) => a + b, 0);
