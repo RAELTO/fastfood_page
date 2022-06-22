@@ -157,8 +157,6 @@ var app = new Vue({
         closemodal(item){
             item.order_amount = 1;
         },
-        closepayments(){
-        },
         cartClick(){
             if (this.cart.length > 0) {
                 const total = this.cart.map(element => element.price * element.qty).reduce((a, b) => a + b, 0);
@@ -215,7 +213,8 @@ var app = new Vue({
                 this.order.push({
                     id: this.order.length + 1,
                     order: [],
-                    statusEmpl: 'Cancelado',
+                    statusChef: 'Cancelado',
+                    statusWaiter: 'Cancelado',
                     totalp: 0,
                     statusAdmin: 'Cancelado',
                     totalc: totalc,
@@ -248,7 +247,8 @@ var app = new Vue({
                     this.order.push({
                         id: this.order.length + 1,
                         order: [],
-                        statusEmpl: 'Pendiente',
+                        statusChef: 'Pendiente',
+                        statusWaiter: 'Pendiente',
                         totalp: totalp,
                         statusAdmin: 'Pagado',
                         totalc: 0,
@@ -324,6 +324,12 @@ var app = new Vue({
             this.logspan = 0;
             this.userinput = '';
             this.passinput = '';
+        },
+        chefbtn(index){
+            this.order[index].statusChef = 'Completado';
+        },
+        waiterbtn(index){
+            this.order[index].statusWaiter = 'Entregado';
         },
         logout(){
             if (confirm("¿Esta seguro de que desea cerrar sesión?") === true){
