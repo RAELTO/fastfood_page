@@ -278,7 +278,7 @@
 
                 <!-- Modal Carrito -->
                 <div class="modal fade" id="carrito" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
+                    <div class="modal-dialog" v-if="ptrigger === 0">
                         <div class="modal-content">
                             <div class="modal-header text-center">
                                 <h5 class="modal-title text-center" id="exampleModalLabel">Carrito</h5>
@@ -293,7 +293,7 @@
                                                 <th>Producto</th>
                                                 <th>Nombre</th>
                                                 <th>cantidad</th>
-                                                <th>Precio</th>
+                                                <th>Precio Unitario</th>
                                                 <th>Eliminar</th>
                                             </tr>
                                         </thead>
@@ -314,9 +314,38 @@
                                 <h4 class="text-center"><strong>TOTAL:</strong> <span><strong v-text="totalCart">$0.000</strong></span></h4>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" data-bs-toggle="modal" data-bs-target="#pago"><strong>Ir a pagar</strong></button>
-                                <button @click="cancel" type="button" class="cancel" v-if="cart.length > 0"><strong>Cancelar</strong></button>
-                                <button type="button" class="cancel" data-bs-dismiss="modal" aria-label="Close" v-else><strong>Cancelar</strong></button>
+                                <button @click="payments" type="button"><strong>Ir a pagar</strong></button>
+                                <button @click="cancel" type="button" class="cancel" data-bs-dismiss="modal" aria-label="Close"><strong>Cancelar</strong></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="pago" class="modal-dialog" v-else>
+                        <div class="modal-content">
+                            <div class="modal-header text-center">
+                                <h5 class="modal-title text-center" id="exampleModalLabel">Pagos</h5>
+                                <button @click="closepayments" type="button" class="btn btn-dark" data-bs-dismiss="modal" aria-label="Close"><i class="fas fa-times"></i></button>
+                            </div>
+                            <div class="modal-body">
+                                <h4 class="text-center"><strong>SELECCIONA TU MÉTODO DE PAGO</strong></h4>
+                                <div class="row text-center">
+                                    <div class="col-12 form-check form-check-inline mt-2 mb-2 mw-100">
+                                        <label class="form-check-label" for="inlineRadio1">
+                                            <img src="./assets/images/credit.png" alt="">
+                                        </label>
+                                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="tarjeta">
+                                    </div>
+                                    <div class="col-12 form-check form-check-inline mt-2 mb-2">
+                                        <label class="form-check-label radio-label" for="inlineRadio2">
+                                            <img src="./assets/images/nequi.png" alt="">
+                                        </label>
+                                        <input class="form-check-input radio-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="nequi">
+                                    </div>
+                                </div>
+                                <h4 class="text-center"><strong>TOTAL A PAGAR: </strong><span><strong v-text="totalCart"></strong></span></h4>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" @click="sendorder"  data-bs-dismiss="modal"  aria-label="close"><strong>Pagar Pedido</strong></button>
+                                <button type="button" class="cancel" data-bs-dismiss="modal"  aria-label="close"><strong>Cancelar</strong></button>
                             </div>
                         </div>
                     </div>
@@ -343,8 +372,8 @@
                                             <th>Acciones</th>
                                         </tr>
                                         </thead>
-                                        <tbody class="text-center"  v-if="cheftable.length">
-                                            <tr v-for="(item, index) in cheftable" :key="item.id">
+                                        <tbody class="text-center"  v-if="order.length">
+                                            <tr v-for="(item, index) in order" :key="item.id">
                                                 <td class="pt-5" v-text="item.id"></td>
                                                 <td>
                                                     <table class="table table-dark">
@@ -443,8 +472,8 @@
                                             <th>Estado</th>
                                         </tr>
                                         </thead>
-                                        <tbody class="text-center"  v-if="cheftable.length">
-                                            <tr v-for="(item, index) in cheftable" :key="item.id">
+                                        <tbody class="text-center"  v-if="order.length">
+                                            <tr v-for="(item, index) in order" :key="item.id">
                                                 <td v-text="item.order"></td>
                                                 <td v-text="item.qty"></td>
                                                 <td v-if="item.status === 'Completado'"><span v-text="item.status" class="text-success"></span></td>
@@ -467,65 +496,38 @@
                 <!-- /modal tabla admin -->
 
                 <!-- Modal Pago -->
-                <div class="modal fade" id="pago" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <!-- <div class="modal fade" id="pago" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header text-center">
-                                <h5 class="modal-title text-center" id="exampleModalLabel">Pago</h5>
+                                <h5 class="modal-title text-center" id="exampleModalLabel">Pagos</h5>
                                 <button type="button" class="btn btn-dark" data-bs-dismiss="modal" aria-label="Close"><i class="fas fa-times"></i></button>
                             </div>
                             <div class="modal-body">
-                                <h4>Tu Pedido:</h4>
-                                <div class="table-responsive">
-                                    <table class="table table-dark table-hover">
-                                        <thead class="text-center">
-                                            <tr>
-                                                <th>Producto</th>
-                                                <th>Nombre</th>
-                                                <th>cantidad</th>
-                                                <th>Precio</th>
-                                                <th>Estado</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody class="text-center"  v-if="cart.length">
-                                            <tr v-for="(item, index) in order">
-                                                <td><img :src="item.img" alt="product"></td>
-                                                <td v-text="item.prod"></td>
-                                                <td v-text="item.qty"></td>
-                                                <td v-text="item.price"></td>
-                                                <td v-text="item.status"></td>
-                                            </tr>
-                                        </tbody>
-                                        <tbody v-else>
-                                            <td colspan="5" class="text-center">No hay pedidos agregados</td>
-                                        </tbody>
-                                    </table>
+                                <h4 class="text-center"><strong>SELECCIONA TU MÉTODO DE PAGO</strong></h4>
+                                <div class="row text-center">
+                                    <div class="col-12 form-check form-check-inline mt-2 mb-2 mw-100">
+                                        <label class="form-check-label" for="inlineRadio1">
+                                            <img src="./assets/images/credit.png" alt="">
+                                        </label>
+                                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="tarjeta">
+                                    </div>
+                                    <div class="col-12 form-check form-check-inline mt-2 mb-2">
+                                        <label class="form-check-label radio-label" for="inlineRadio2">
+                                            <img src="./assets/images/nequi.png" alt="">
+                                        </label>
+                                        <input class="form-check-input radio-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="nequi">
+                                    </div>
                                 </div>
-                                <h5 ><strong>TOTAL:</strong> <span><strong v-text="totalCart">$0.000</strong></span></h3>
-                                <h5 ><strong>DESCUENTO:</strong> <span><strong >$0.000</strong></span></h3>
-                                <h5 ><strong>TOTAL NETO:</strong> <span><strong v-text="totalCart">$0.000</strong></span></h5>
-
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="Efectivo" v-model="payment">
-                                    <label class="form-check-label" for="inlineRadio1">Efectivo <span class="material-symbols-outlined">
-                                        payments
-                                        </span></label>
-                                </div>
-                                <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="Tarjeta" v-model="payment">
-                                <label class="form-check-label" for="inlineRadio2">Tarjeta  <span class="material-symbols-outlined">
-                                    credit_card
-                                </span></label>
-                                </div>
+                                <h4 class="text-center"><strong>TOTAL: </strong><span><strong v-text="totalCart"></strong></span></h4>
                             </div>
-
                             <div class="modal-footer">
-                                <button type="button" @click="buy"  data-bs-dismiss="modal"  aria-label="close"><strong>Pagar</strong></button>
-                                <button @click="cancelBuy" type="button" class="cancel" data-bs-dismiss="modal"  aria-label="close"><strong>Cancelar</strong></button>
+                                <button type="button" @click="sendorder"  data-bs-dismiss="modal"  aria-label="close"><strong>Pagar Pedido</strong></button>
+                                <button type="button" class="cancel" data-bs-dismiss="modal"  aria-label="close"><strong>Cancelar</strong></button>
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
                 <!-- /Modal pago -->
 
             </section>

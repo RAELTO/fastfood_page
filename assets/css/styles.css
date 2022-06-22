@@ -282,13 +282,14 @@ body{
     font-weight: bold;
 }
 
-#pago tbody img{
-    width: 40px;
-    height: 40px;
+#pago .modal-body label img{
+    width: 200px;
+    height: 25px;
+    border-radius: 0;
 }
 
-#pago tbody img:hover{
-    border: 2px solid #E29D16;
+#pago .modal-body label:active{
+    border: 1px solid #fff;
 }
 
 #pago tbody td{

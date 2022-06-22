@@ -125,9 +125,7 @@ var app = new Vue({
             {id: '3333', charge: 'Admin', password: '3333'},
         ],
         cart: [],//empty array that will store the client's orders
-        cheftable: [
-            
-        ],
+        order: [],
         waitertable: [
             {id: 1, order: 'efgh', qty: 0, status: 'Pendiente'},
         ],
@@ -138,6 +136,7 @@ var app = new Vue({
         logspan: 0,
         userinput: '',
         passinput: '',
+        ptrigger: 0,
     },
     methods: {
         minusbtn(item){
@@ -152,6 +151,9 @@ var app = new Vue({
         },
         closemodal(item){
             item.order_amount = 1;
+        },
+        closepayments(){
+            this.ptrigger = 0;
         },
         cartClick(){
             if (this.cart.length > 0) {
@@ -195,23 +197,31 @@ var app = new Vue({
                 alert('Debe agregar mínimo un producto');
             }
         },
+        payments(){
+            if (this.cart.length > 0) {
+                this.ptrigger = 1;
+            }else{
+                alert('El carrito está vacío, por favor agregue al menos un producto');
+            }
+            
+        },
         sendorder(){
             if (this.cart.length > 0) {
 
-                this.cheftable.push({
-                    id: this.cheftable.length + 1,
+                this.order.push({
+                    id: this.order.length + 1,
                     order: [],
                     status: 'Pendiente'
                 });
 
-                const cheforder = this.cart.map(e => {
+                const prodqty = this.cart.map(e => {
                     return{
                         prod: e.prod,
                         qty: e.qty
                     }
                 });
 
-                this.cheftable[this.cheftable.length - 1].order = cheforder;
+                this.order[this.order.length - 1].order = prodqty;
                 
                 alert('Tu pedido se está preparando, lo recibirás muy pronto');
                 this.cancel();
@@ -238,7 +248,9 @@ var app = new Vue({
                 this.hb.forEach(element => element.order_amount = 1);
                 this.hd.forEach(element => element.order_amount = 1);
                 this.fcartN = '';
+                this.ptrigger = 0;
             }else{
+                alert('No hay productos en el carrito, por favor agregue al menos uno');
                 const total = this.cart.map(element => element.price * element.qty).reduce((a, b) => a + b, 0);
                 this.totalCart = new Intl.NumberFormat('es-ES', {style: 'currency',currency: 'COP', minimumFractionDigits: 0}).format(total);
             }
